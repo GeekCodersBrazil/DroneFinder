@@ -1,0 +1,15 @@
+<div>
+  <mat-toolbar color="primary" class="fixed-header">
+    <h1>Animation Test</h1>
+  </mat-toolbar>
+</div>
+<div style="height:80px"></div>
+<mat-card style="overflow: auto">
+<div>
+  <button [@myMovement]="{value: movement, params: {valueX: valueX}}" (@myMovement.done)="onDone($event)" (click)="onClick()" mat-raised-button color='primary'>Move it</button>
+</div>
+<div style="height:20px"></div>
+<div>
+  <button (mouseleave)="mouseLeave()" (mouseenter)="mouseEnter()" [@myTrigger]="state" mat-raised-button color='primary'>Test</button>
+</div>
+</mat-card>
