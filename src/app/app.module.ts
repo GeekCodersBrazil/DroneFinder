@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 
 // Firebase imports
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireDatabaseModule } from '@angular/fire/database'; // Realtime database
+import { AngularFirestoreModule } from '@angular/fire/firestore'; // Firestore database
 import { environment } from '../firebase.environment';
 
 // Angular Material imports
@@ -25,6 +26,7 @@ import { AnimationTestComponent } from './animation-test/animation-test.componen
 
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
+    AngularFirestoreModule,
 
     BrowserAnimationsModule,
     MatToolbarModule,
