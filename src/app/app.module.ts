@@ -6,20 +6,27 @@ import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database'; // Realtime database
 import { AngularFirestoreModule } from '@angular/fire/firestore'; // Firestore database
-import { environment } from '../firebase.environment';
+import { AngularFireAuthModule } from '@angular/fire/auth'; // Firebase Authentication
 
 // Angular Material imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatCardModule, MatButtonModule } from '@angular/material';
 
 // App imports
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
-import { AnimationTestComponent } from './animation-test/animation-test.component';
+
+// Modules
+import { ServiceModule } from './shared/service/service.module';
+import { MainModule } from './main/main.module';
+import { AppRoutingModule } from './/app-routing.module';
+
+// Services
+import { AuthService } from './shared/service/auth.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AnimationTestComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -27,13 +34,18 @@ import { AnimationTestComponent } from './animation-test/animation-test.componen
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
+    AngularFireAuthModule,
 
     BrowserAnimationsModule,
     MatToolbarModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+
+    ServiceModule,
+    MainModule,
+    AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ AuthService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
