@@ -1,0 +1,30 @@
+<mat-card class="form-container">
+  <mat-card-title color="primary">Drone Form</mat-card-title>
+  <div>
+    <p>Basic information</p>
+    <mat-form-field>
+      <input matInput [(ngModel)]="drone.model" placeholder="Model name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select [(ngModel)]="drone.brand" placeholder="Brand">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let brand of brandService.brandList" [value]="brand">{{brand.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button (click)="onAddBrand()">New Brand</button>
+  </div>
+  <div>
+    <p>Product refference</p>
+    <mat-form-field>
+      <input matInput [(ngModel)]="drone.pictureURL" placeholder="Picture URL" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="drone.productURL" placeholder="Poduct URL" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input [(ngModel)]="drone.releaseDate" matInput [matDatepicker]="picker" placeholder="Release date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+</mat-card>

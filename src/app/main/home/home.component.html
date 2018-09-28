@@ -1,19 +1,4 @@
-<div>
-  <mat-toolbar color="primary" class="fixed-header">
-    <mat-toolbar-row>
-      <span>Drone Finder</span>
-      <mat-icon class="account"></mat-icon>
-      <span style="flex: 1 1 auto"></span>
-      <div *ngIf="!(authService.user$ | async)?.uid">
-        <button (click)="authService.login()" mat-button color="basic">Sign in <mat-icon style="padding: 10px">account_circle</mat-icon></button>
-      </div>
-      <div *ngIf="(authService.user$ | async)?.uid">
-          <span><mat-icon style="padding: 10px">account_circle</mat-icon>{{(authService.user$ | async)?.displayName}}</span>
-          <button (click)="authService.logout()" mat-button color="basic">Sign out</button>
-      </div>
-    </mat-toolbar-row>
-  </mat-toolbar>
-</div>
-<div style="height:80px"></div>
+<shd-title-bar></shd-title-bar>
+
 <mat-card style="overflow: auto" class="container">
 </mat-card>

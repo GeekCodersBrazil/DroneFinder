@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Add new brand</h1>
+<div mat-dialog-content>
+  <div>
+    <mat-form-field>
+      <input matInput [(ngModel)]="brand.name" placeholder="Brand Name" required>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <input matInput [(ngModel)]="brand.brandURL" placeholder="Brand URL" required>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <input matInput [(ngModel)]="brand.brandImageURL" placeholder="Brand image URL" required>
+    </mat-form-field>
+  </div>
+
+</div>
+
+<mat-dialog-actions>
+  <button mat-button color="primary" (click)="onOkClick()">Submit</button>
+  <button mat-button color="primary" (click)="onCancelClick()">Cancel</button>
+</mat-dialog-actions>

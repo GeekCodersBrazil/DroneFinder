@@ -1,0 +1,20 @@
+<div>
+  <mat-toolbar class="fixed-header">
+    <mat-toolbar-row style="height: 120px;">
+      <span><img src="/assets/img/logosmall.png"/> {{name}}</span>
+      <mat-icon class="account"></mat-icon>
+      <span style="flex: 1 1 auto"></span>
+      <div *ngIf="!(authService.user$ | async)?.uid">
+        <button (click)="authService.login()" mat-button color="basic">Sign in <mat-icon style="padding: 10px">account_circle</mat-icon></button>
+      </div>
+      <div *ngIf="(authService.user$ | async)?.uid">
+          <div>
+          <span style="padding: 10px;"><label>{{(authService.user$ | async)?.displayName}}</label><mat-icon style="padding: 10px">account_circle</mat-icon></span>
+          </div>
+          <button (click)="authService.logout()" style="float:right;" mat-button color="basic">Sign out</button>
+          <button (click)="openAdmin()" style="float:right;" mat-button color="basic">Admin</button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
+<div style="height:130px"></div>
