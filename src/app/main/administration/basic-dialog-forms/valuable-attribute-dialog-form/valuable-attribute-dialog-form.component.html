@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Add new value</h1>
+<div mat-dialog-content>
+  <div>
+    <mat-form-field>
+      <input matInput [(ngModel)]="value.value" placeholder="Value" required>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput [(ngModel)]="value.order" placeholder="Order" required>
+    </mat-form-field>
+  </div>
+</div>
+
+<mat-dialog-actions>
+  <button mat-button color="primary" (click)="onOkClick()">Submit</button>
+  <button mat-button color="primary" (click)="onCancelClick()">Cancel</button>
+</mat-dialog-actions>

@@ -24,7 +24,12 @@ import { AppRoutingModule } from './/app-routing.module';
 // Services and Guards
 import { AuthService } from './core/service/auth.service';
 import { AdminGuard } from './core/guard/admin.guard';
+import { CategoryService } from './core/service/category.service';
 import { BrandService } from './core/service/brand.service';
+import { RcTypeService } from './core/service/rcType.Service';
+import { CameraPhotoService } from './core/service/cameraPhoto.Service';
+import { CameraVideoService } from './core/service/cameraVideo.Service';
+import { BatteryService } from './core/service/battery.Service';
 
 @NgModule({
   declarations: [
@@ -51,7 +56,12 @@ import { BrandService } from './core/service/brand.service';
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     AuthService,
     AdminGuard,
-    BrandService
+    BrandService,
+    CategoryService,
+    RcTypeService,
+    CameraPhotoService,
+    CameraVideoService,
+    BatteryService
    ],
   bootstrap: [ AppComponent ]
 })

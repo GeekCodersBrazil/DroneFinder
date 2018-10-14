@@ -14,20 +14,22 @@ export class Drone {
   pictureURL: string
   productURL?: string
   releaseDate?: Date
+  gpsPosition: boolean
+  heightLock: boolean
+  rcType: ValuableAttribute
   cameraPhoto: ValuableAttribute
   cameraMovie: ValuableAttribute
   fpvType: ValuableAttribute
-  battery: ValuableAttribute
-  chargeTime: number
-  flightTime: number
-  flightMaximunDistance: number
-  rcType: ValuableAttribute
-  physical: PhysicalAttributes
-  priceRange: RangedAttribute
-  videos: string[]
-  pictures: string[]
-  reviews: string[]
-  rating: RatingAttribute
+  battery?: ValuableAttribute
+  chargeTime?: number
+  flightTime?: number
+  flightMaximunDistance?: number
+  physical: PhysicalAttributes = new PhysicalAttributes
+  priceRange: RangedAttribute = new RangedAttribute
+  videos: string[] = []
+  pictures: string[] = []
+  reviews: string[] = []
+  rating: RatingAttribute = new RatingAttribute
 
   // Update the rating attribute with the calculated value and increase the ammount of people that has evaluated it
   updateRating(rate: number) {

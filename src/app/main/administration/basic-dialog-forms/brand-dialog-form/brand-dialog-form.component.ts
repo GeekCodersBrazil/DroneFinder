@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Brand } from '../../../core/model/brand.model';
-import { BrandService } from '../../../core/service/brand.service';
 import { MatDialogRef } from '@angular/material';
+
+import { Brand } from '../../../../core/model/brand.model';
+import { BrandService } from '../../../../core/service/brand.service';
 
 @Component({
   selector: 'app-brand-dialog-form',
