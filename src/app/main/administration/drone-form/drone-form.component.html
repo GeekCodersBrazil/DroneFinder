@@ -1,153 +1,194 @@
 <mat-card class="form-container">
   <mat-card-title color="primary">Drone Form</mat-card-title>
-  <div>
-    <p>Basic information</p>
-    <mat-form-field>
-      <input matInput [(ngModel)]="drone.model" placeholder="Model name" required>
-    </mat-form-field>
+  <mat-vertical-stepper linear="false">
 
-    <mat-form-field>
-      <mat-select [(ngModel)]="drone.brand" placeholder="Brand">
-        <mat-option>None</mat-option>
-        <mat-option *ngFor="let brand of brandService.brandList" [value]="brand">{{brand.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <button mat-button (click)="onAddBrand()">New Brand</button>
+    <mat-step label="Basic information">
+      <div class="step-container">
+        <mat-form-field>
+          <input matInput [(ngModel)]="drone.model" placeholder="Model name" required>
+        </mat-form-field>
 
-    <mat-form-field>
-      <mat-select [(ngModel)]="drone.category" placeholder="Category">
-        <mat-option>None</mat-option>
-        <mat-option *ngFor="let category of categoryService.categoryList" [value]="category">{{category}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <button mat-button (click)="onAddCategory()">New Category</button>
-  </div>
+        <div class="form-field">
+          <mat-form-field>
+            <mat-select [(ngModel)]="drone.brand" placeholder="Brand">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let brand of brandService.brandList" [value]="brand">{{brand.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-button (click)="onAddBrand()">New Brand</button>
+        </div>
+
+        <div class="form-field">
+          <mat-form-field>
+            <mat-select [(ngModel)]="drone.category" placeholder="Category">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let category of categoryService.categoryList" [value]="category">{{category}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-button (click)="onAddCategory()">New Category</button>
+        </div>
+      </div>
+    </mat-step>
 
 
-  <div>
-    <p>Product refference</p>
-    <mat-form-field>
-      <input matInput [(ngModel)]="drone.pictureURL" placeholder="Picture URL" required>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput [(ngModel)]="drone.productURL" placeholder="Poduct URL" required>
-    </mat-form-field>
+    <mat-step label="Product reference">
+      <div class="step-container">
+        <div class="form-field">
+          <mat-form-field>
+            <input matInput [(ngModel)]="drone.pictureURL" placeholder="Picture URL" required>
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <mat-form-field>
+            <input matInput [(ngModel)]="drone.productURL" placeholder="Poduct URL" required>
+          </mat-form-field>
+        </div>
 
-    <mat-form-field>
-      <input [(ngModel)]="drone.releaseDate" matInput [matDatepicker]="picker" placeholder="Release date">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-  </div>
+        <div class="form-field">
+          <mat-form-field>
+            <input [(ngModel)]="drone.releaseDate" matInput [matDatepicker]="picker" placeholder="Release date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-step>
 
-  <div>
-    <p>Features</p>
-    <mat-checkbox [(ngModel)]="drone.gpsPosition" color="primary">GPS Position</mat-checkbox>
-    <mat-checkbox [(ngModel)]="drone.heightLock" color="primary">Height Lock</mat-checkbox>
-  </div>
+    <mat-step label="Features">
+      <div class="step-container">
+        <div class="form-field">
+          <mat-checkbox [(ngModel)]="drone.gpsPosition" color="primary">GPS Position</mat-checkbox>
+        </div>
+        <div class="form-field">
+          <mat-checkbox [(ngModel)]="drone.heightLock" color="primary">Height Lock</mat-checkbox>
+        </div>
 
-  <div>
-    <p>Accessories</p>
-    <div>
-      <mat-form-field>
-        <mat-select [(ngModel)]="drone.rcType" placeholder="RC Type">
-          <mat-option>None</mat-option>
-          <mat-option *ngFor="let rcType of rcTypeService.list" [value]="rcType">{{rcType.value}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <button mat-button (click)="onAddRcType()">New RC Type</button>
-    </div>
+        <div>
+          <div class="form-field">
+            <mat-form-field>
+              <input matInput [(ngModel)]="drone.physical.width" placeholder="Width">
+            </mat-form-field>
+          </div>
 
-    <div>
-      <mat-form-field>
-        <mat-select [(ngModel)]="drone.cameraPhoto" placeholder="Camera photo">
-          <mat-option>None</mat-option>
-          <mat-option *ngFor="let cameraPhoto of cameraPhotoService.list" [value]="cameraPhoto">{{cameraPhoto.value}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <button mat-button (click)="onAddCameraPhoto()">New C. Photo</button>
+          <div class="form-field">
+            <mat-form-field>
+              <input matInput [(ngModel)]="drone.physical.height" placeholder="Height">
+            </mat-form-field>
+          </div>
 
-      <mat-form-field>
-        <mat-select [(ngModel)]="drone.cameraVideo" placeholder="Camera video">
-          <mat-option>None</mat-option>
-          <mat-option *ngFor="let cameraVideo of cameraVideoService.list" [value]="cameraVideo">{{cameraVideo.value}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <button mat-button (click)="onAddCameraVideo()">New C. Video</button>
-    </div>
-  </div>
+          <div class="form-field">
+            <mat-form-field>
+              <input matInput [(ngModel)]="drone.physical.lenght" placeholder="Lenght">
+            </mat-form-field>
+          </div>
 
-  <div>
-    <p>Power and Autonomy</p>
-    <div>
-      <mat-form-field>
-        <mat-select [(ngModel)]="drone.battery" placeholder="Battery">
-          <mat-option>None</mat-option>
-          <mat-option *ngFor="let battery of batteryService.list" [value]="battery">{{battery.value}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <button mat-button (click)="onAddBattery()">New Battery</button>
+          <div class="form-field">
+            <mat-form-field>
+              <input matInput [(ngModel)]="drone.physical.weight" placeholder="Weight">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </mat-step>
 
-      <mat-form-field>
-        <input matInput [(ngModel)]="drone.chargeTime" placeholder="Charge Time">
-      </mat-form-field>
-    </div>
+    <mat-step label="Accessories">
+      <div class="step-container">
+        <div class="form-field">
+          <mat-form-field>
+            <mat-select [(ngModel)]="drone.rcType" placeholder="RC Type">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let rcType of rcTypeService.list" [value]="rcType">{{rcType.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-button (click)="onAddRcType()">New RC Type</button>
+        </div>
 
-    <div>
-      <mat-form-field>
-        <input matInput [(ngModel)]="drone.flightTime" placeholder="Flight time">
-      </mat-form-field>
+        <div class="form-field">
+          <mat-form-field>
+            <mat-select [(ngModel)]="drone.cameraPhoto" placeholder="Camera photo">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let cameraPhoto of cameraPhotoService.list" [value]="cameraPhoto">{{cameraPhoto.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-button (click)="onAddCameraPhoto()">New C. Photo</button>
+        </div>
 
-      <mat-form-field>
-        <input matInput [(ngModel)]="drone.flightMaximunDistance" placeholder="Flight maximun distance">
-      </mat-form-field>
-    </div>
-  </div>
+        <div class="form-field">
+          <mat-form-field>
+            <mat-select [(ngModel)]="drone.cameraVideo" placeholder="Camera video">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let cameraVideo of cameraVideoService.list" [value]="cameraVideo">{{cameraVideo.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-button (click)="onAddCameraVideo()">New C. Video</button>
+        </div>
+      </div>
+    </mat-step>
 
-  <div>
-    <p>Pricing</p>
-    <div>
-      <mat-form-field>
-        <input matInput [(ngModel)]="drone.priceRange.min" placeholder="Minimum price">
-      </mat-form-field>
 
-      <mat-form-field>
-        <input matInput [(ngModel)]="drone.priceRange.max" placeholder="Maximun price">
-      </mat-form-field>
-    </div>
-  </div>
+    <mat-step label="Power and Autonomy">
+      <div class="step-container">
+        <div class="form-field">
+          <mat-form-field>
+            <mat-select [(ngModel)]="drone.battery" placeholder="Battery">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let battery of batteryService.list" [value]="battery">{{battery.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-button (click)="onAddBattery()">New Battery</button>
+        </div>
 
-  <div>
-    <p>Physical</p>
-    <div>
-      <mat-form-field>
-        <input matInput [(ngModel)]="drone.physical.width" placeholder="Width">
-      </mat-form-field>
+        <div class="form-field">
+          <mat-form-field>
+            <input matInput [(ngModel)]="drone.chargeTime" placeholder="Charge Time">
+          </mat-form-field>
+        </div>
 
-      <mat-form-field>
-        <input matInput [(ngModel)]="drone.physical.height" placeholder="Height">
-      </mat-form-field>
+        <div class="form-field">
+          <mat-form-field>
+            <input matInput [(ngModel)]="drone.flightTime" placeholder="Flight time">
+          </mat-form-field>
+        </div>
 
-      <mat-form-field>
-        <input matInput [(ngModel)]="drone.physical.lenght" placeholder="Lenght">
-      </mat-form-field>
+        <div class="form-field">
+          <mat-form-field>
+            <input matInput [(ngModel)]="drone.flightMaximunDistance" placeholder="Flight maximun distance">
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-step>
 
-      <mat-form-field>
-        <input matInput [(ngModel)]="drone.physical.weight" placeholder="Weight">
-      </mat-form-field>
-    </div>
-  </div>
 
-  <div>
-    <p>Media</p>
-    <div class = "form-field">
-      <shd-array-container title = "Videos" [items] = "drone.videos"></shd-array-container>
-    </div>
-    <div class = "form-field">
-      <shd-array-container title = "Pictures" [items] = "drone.pictures"></shd-array-container>
-    </div>
-    <div class = "form-field">
-      <shd-array-container title = "Reviews" [items] = "drone.reviews"></shd-array-container>
-    </div>
-  </div>
+    <mat-step label="Pricing">
+      <div class="step-container">
+        <div class="form-field">
+          <mat-form-field>
+            <input matInput [(ngModel)]="drone.priceRange.min" placeholder="Minimum price">
+          </mat-form-field>
+        </div>
+
+        <div class="form-field">
+
+          <mat-form-field>
+            <input matInput [(ngModel)]="drone.priceRange.max" placeholder="Maximun price">
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-step>
+
+
+    <mat-step label="Related media">
+      <div class="step-container">
+        <div class="form-field">
+          <shd-array-container title="Videos" [items]="drone.videos"></shd-array-container>
+        </div>
+        <div class="form-field">
+          <shd-array-container title="Pictures" [items]="drone.pictures"></shd-array-container>
+        </div>
+        <div class="form-field">
+          <shd-array-container title="Reviews" [items]="drone.reviews"></shd-array-container>
+        </div>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
 </mat-card>

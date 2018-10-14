@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatCardModule, MatButtonModule, MatIconModule, MatListModule, MatInputModule, MatDatepickerModule, MatOptionModule, MatSelectModule, MatDialogModule, MatCheckboxModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatButtonModule, MatIconModule, MatListModule, MatInputModule, MatDatepickerModule, MatOptionModule, MatSelectModule, MatDialogModule, MatCheckboxModule, MatStepperModule } from '@angular/material';
 
 import { SharedModule } from './../../shared/shared.module';
 
@@ -32,6 +32,7 @@ import { ValuableAttributeDialogFormComponent } from './basic-dialog-forms/valua
     MatSelectModule,
     MatDialogModule,
     MatCheckboxModule,
+    MatStepperModule,
 
     SharedModule
   ],
