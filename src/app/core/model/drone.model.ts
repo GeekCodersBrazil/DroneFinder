@@ -15,7 +15,7 @@ export class Drone {
   productURL?: string
   releaseDate?: Date
   gpsPosition: boolean
-  heightLock: boolean
+  altitudeHold: boolean
   rcType: ValuableAttribute
   cameraPhoto: ValuableAttribute
   cameraMovie: ValuableAttribute

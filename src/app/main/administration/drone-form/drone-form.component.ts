@@ -1,10 +1,8 @@
-import { PhysicalAttributes } from './../../../core/model/subtypes/physical-attributes';
-import { RangedAttribute } from './../../../core/model/subtypes/ranged-attribute';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { BrandService } from './../../../core/service/brand.service';
 import { Component, OnInit } from '@angular/core';
 
-import { Drone } from './../../../core/model/drone.model';
 import { CategoryService } from '../../../core/service/category.service';
 
 import { BrandDialogFormComponent } from '../basic-dialog-forms/brand-dialog-form/brand-dialog-form.component';
@@ -14,6 +12,7 @@ import { ValuableAttributeDialogFormComponent } from '../basic-dialog-forms/valu
 import { CameraPhotoService } from './../../../core/service/cameraPhoto.Service';
 import { CameraVideoService } from '../../../core/service/cameraVideo.Service';
 import { BatteryService } from './../../../core/service/battery.Service';
+import { Drone } from 'src/app/core/model/drone.model';
 
 @Component({
   selector: 'app-drone-form',
@@ -21,10 +20,19 @@ import { BatteryService } from './../../../core/service/battery.Service';
   styleUrls: ['./drone-form.component.scss']
 })
 export class DroneFormComponent implements OnInit {
+  drone: Drone = new Drone()
 
-  drone: Drone = new Drone
+  formDrone: FormGroup
+  basic: FormGroup
+  reference: FormGroup
+  features: FormGroup
+  accessories: FormGroup
+  powerAutonomy: FormGroup
+  pricing: FormGroup
+  media: FormGroup
 
   constructor(private dialog: MatDialog,
+    private FormBuilder: FormBuilder,
     public brandService: BrandService,
     public categoryService: CategoryService,
     public rcTypeService: RcTypeService,
@@ -33,7 +41,51 @@ export class DroneFormComponent implements OnInit {
     public batteryService: BatteryService) { }
 
   ngOnInit() {
+    let fb = this.FormBuilder
+    this.formDrone = fb.group({
+      basic: fb.group({
+        model: ['', Validators.required],
+        brand: ['', Validators.required],
+        category: ['', Validators.required]
+      }),
+      reference: fb.group({
+        pictureURL: ['', Validators.compose([Validators.required])], // TODO Add URL Validator
+        productURL: [''], // TODO Add URL Validator
+        releaseDate: ['']
+      }),
+      features: fb.group({
+        gpsPosition: [''],
+        altitudeHold: [''],
+        physical: fb.group({
+          width: ['', Validators.pattern("\\d+")],
+          height: ['', Validators.pattern("\\d+")],
+          length: ['', Validators.pattern("\\d+")],
+          weight: ['', Validators.pattern("\\d+\\.?\\d*")]
+        })
+      }),
+      accessories: fb.group({
+        rcType: [''],
+        cameraPhoto: [''],
+        cameraVideo: ['']
+      }),
+      powerAutonomy: fb.group({
+        battery: [''],
+        chargeTime: ['', Validators.pattern("\\d+")],
+        flightTime: ['', Validators.pattern("\\d+")],
+        flightMaximunDistance: ['', Validators.pattern("\\d+")]
+      }),
+      pricing: fb.group({
+          min: ['', Validators.pattern("\\d+\\.\\d{2}")],
+          max: ['', Validators.pattern("\\d+\\.\\d{2}")]
+      })
+    })
 
+    this.basic = this.formDrone.get('basic') as FormGroup
+    this.reference = this.formDrone.get('reference') as FormGroup
+    this.features = this.formDrone.get('features') as FormGroup
+    this.accessories = this.formDrone.get('accessories') as FormGroup
+    this.powerAutonomy = this.formDrone.get('powerAutonomy') as FormGroup
+    this.pricing = this.formDrone.get('pricing') as FormGroup
   }
 
   onAddBrand() {
@@ -58,6 +110,10 @@ export class DroneFormComponent implements OnInit {
 
   onAddBattery() {
     this.dialog.open(ValuableAttributeDialogFormComponent, { data: {service: this.batteryService}, width: '500px', height: '270px' });
+  }
+
+  onTest() {
+    console.log(this.formDrone.value)
   }
 
 }
