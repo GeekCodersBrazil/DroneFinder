@@ -4,7 +4,7 @@
 @import './theme.scss';
 
 body {
-  background-color: map-get($my-pallete, 50)
+  background-color: map-get($custom-primary, 50)
 };
 
 .container {

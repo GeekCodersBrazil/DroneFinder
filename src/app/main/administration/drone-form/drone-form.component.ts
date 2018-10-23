@@ -57,10 +57,10 @@ export class DroneFormComponent implements OnInit {
         gpsPosition: [''],
         altitudeHold: [''],
         physical: fb.group({
-          width: ['', Validators.pattern("\\d+")],
-          height: ['', Validators.pattern("\\d+")],
-          length: ['', Validators.pattern("\\d+")],
-          weight: ['', Validators.pattern("\\d+\\.?\\d*")]
+          width: ['', Validators.compose([Validators.required, Validators.pattern("\\d+")])],
+          height: ['', Validators.compose([Validators.required, Validators.pattern("\\d+")])],
+          length: ['', Validators.compose([Validators.required, Validators.pattern("\\d+")])],
+          weight: ['', Validators.compose([Validators.required, Validators.pattern("\\d+\\.?\\d*")])]
         })
       }),
       accessories: fb.group({
@@ -69,14 +69,14 @@ export class DroneFormComponent implements OnInit {
         cameraVideo: ['']
       }),
       powerAutonomy: fb.group({
-        battery: [''],
-        chargeTime: ['', Validators.pattern("\\d+")],
-        flightTime: ['', Validators.pattern("\\d+")],
-        flightMaximunDistance: ['', Validators.pattern("\\d+")]
+        battery: ['', Validators.required],
+        chargeTime: ['', Validators.compose([Validators.required, Validators.pattern("\\d+")])],
+        flightTime: ['', Validators.compose([Validators.required, Validators.pattern("\\d+")])],
+        flightMaximunDistance: ['', Validators.compose([Validators.required, Validators.pattern("\\d+")])]
       }),
       pricing: fb.group({
-          min: ['', Validators.pattern("\\d+\\.\\d{2}")],
-          max: ['', Validators.pattern("\\d+\\.\\d{2}")]
+          min: ['', Validators.compose([Validators.required, Validators.pattern("\\d+\\.\\d{2}")])],
+          max: ['', Validators.compose([Validators.required, Validators.pattern("\\d+\\.\\d{2}")])]
       })
     })
 
@@ -114,6 +114,14 @@ export class DroneFormComponent implements OnInit {
 
   onTest() {
     console.log(this.formDrone.value)
+  }
+
+  cancel() {
+
+  }
+
+  saveDrone() {
+    console.log(this.formDrone.valid)
   }
 
 }

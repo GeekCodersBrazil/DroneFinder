@@ -2,206 +2,228 @@
   <mat-card-title color="primary">Drone Form</mat-card-title>
 
   <form [formGroup]="formDrone">
-  <mat-vertical-stepper linear="false">
+    <mat-vertical-stepper linear="false">
 
-    <mat-step [stepControl]='basic' label="Basic information" formGroupName="basic">
-      <div class="step-container">
-        <mat-form-field>
-          <input matInput formControlName="model" placeholder="Model name" required>
-        </mat-form-field>
-
-        <div class="form-field">
+      <mat-step [stepControl]='basic' label="Basic information" formGroupName="basic">
+        <div class="step-container">
           <mat-form-field>
-            <mat-select formControlName="brand" placeholder="Brand">
-              <mat-option>None</mat-option>
-              <mat-option *ngFor="let brand of brandService.brandList" [value]="brand">{{brand.name}}</mat-option>
-            </mat-select>
+            <input matInput formControlName="model" placeholder="Model name" required>
           </mat-form-field>
-          <button mat-button (click)="onAddBrand()">New Brand</button>
-        </div>
 
-        <div class="form-field">
-          <mat-form-field>
-            <mat-select formControlName="category" placeholder="Category">
-              <mat-option>None</mat-option>
-              <mat-option *ngFor="let category of categoryService.categoryList" [value]="category">{{category}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <button mat-button (click)="onAddCategory()">New Category</button>
-        </div>
-      </div>
-    </mat-step>
-
-
-    <mat-step [stepControl]="reference" label="Product reference" formGroupName="reference">
-      <div class="step-container">
-        <div class="form-field">
-          <mat-form-field>
-            <input matInput formControlName="pictureURL" placeholder="Picture URL" required>
-          </mat-form-field>
-        </div>
-        <div class="form-field">
-          <mat-form-field>
-            <input matInput formControlName="productURL" placeholder="Product URL">
-          </mat-form-field>
-        </div>
-
-        <div class="form-field">
-          <mat-form-field>
-            <input formControlName="releaseDate" matInput [matDatepicker]="picker" placeholder="Release date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-        </div>
-      </div>
-    </mat-step>
-
-
-    <mat-step [stepControl]="features" label="Features" formGroupName="features">
-      <div class="step-container">
-        <div class="form-field">
-          <mat-checkbox formControlName="gpsPosition" color="primary">GPS Position</mat-checkbox>
-        </div>
-        <div class="form-field">
-          <mat-checkbox formControlName="altitudeHold" color="primary">Altitude Hold</mat-checkbox>
-        </div>
-
-        <div formGroupName="physical">
           <div class="form-field">
             <mat-form-field>
-              <input matInput formControlName="width" placeholder="Width(mm)">
+              <mat-select formControlName="brand" placeholder="Brand">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let brand of brandService.brandList" [value]="brand">{{brand.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-button (click)="onAddBrand()">New Brand</button>
+          </div>
+
+          <div class="form-field">
+            <mat-form-field>
+              <mat-select formControlName="category" placeholder="Category">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let category of categoryService.categoryList" [value]="category">{{category}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-button (click)="onAddCategory()">New Category</button>
+          </div>
+        </div>
+        <div class="stepper-button-pannel">
+          <button mat-button matStepperNext color="primary">Next</button>
+        </div>
+      </mat-step>
+
+
+      <mat-step [stepControl]="reference" label="Product reference" formGroupName="reference">
+        <div class="step-container">
+          <div class="form-field">
+            <mat-form-field>
+              <input matInput formControlName="pictureURL" placeholder="Picture URL" required>
+            </mat-form-field>
+          </div>
+          <div class="form-field">
+            <mat-form-field>
+              <input matInput formControlName="productURL" placeholder="Product URL">
             </mat-form-field>
           </div>
 
           <div class="form-field">
             <mat-form-field>
-              <input matInput formControlName="height" placeholder="Height(mm)">
+              <input formControlName="releaseDate" matInput [matDatepicker]="picker" placeholder="Release date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="stepper-button-pannel">
+          <button mat-button matStepperPrevious color="primary">Previous</button>
+          <button mat-button matStepperNext color="primary">Next</button>
+        </div>
+      </mat-step>
+
+
+      <mat-step [stepControl]="features" label="Features" formGroupName="features">
+        <div class="step-container">
+          <div class="form-field">
+            <mat-checkbox formControlName="gpsPosition" color="primary">GPS Position</mat-checkbox>
+          </div>
+          <div class="form-field">
+            <mat-checkbox formControlName="altitudeHold" color="primary">Altitude Hold</mat-checkbox>
+          </div>
+
+          <div formGroupName="physical">
+            <div class="form-field">
+              <mat-form-field>
+                <input matInput formControlName="width" placeholder="Width(mm)">
+              </mat-form-field>
+            </div>
+
+            <div class="form-field">
+              <mat-form-field>
+                <input matInput formControlName="height" placeholder="Height(mm)">
+              </mat-form-field>
+            </div>
+
+            <div class="form-field">
+              <mat-form-field>
+                <input matInput formControlName="length" placeholder="Lenght(mm)">
+              </mat-form-field>
+            </div>
+
+            <div class="form-field">
+              <mat-form-field>
+                <input matInput formControlName="weight" placeholder="Weight(g)">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="stepper-button-pannel">
+          <button mat-button matStepperPrevious color="primary">Previous</button>
+          <button mat-button matStepperNext color="primary">Next</button>
+        </div>
+      </mat-step>
+
+
+      <mat-step [stepControl]="accessories" label="Accessories" formGroupName="accessories">
+        <div class="step-container">
+          <div class="form-field">
+            <mat-form-field>
+              <mat-select formControlName="rcType" placeholder="RC Type">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let rcType of rcTypeService.list" [value]="rcType">{{rcType.value}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-button (click)="onAddRcType()">New RC Type</button>
+          </div>
+
+          <div class="form-field">
+            <mat-form-field>
+              <mat-select formControlName="cameraPhoto" placeholder="Camera photo">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let cameraPhoto of cameraPhotoService.list" [value]="cameraPhoto">{{cameraPhoto.value}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-button (click)="onAddCameraPhoto()">New C. Photo</button>
+          </div>
+
+          <div class="form-field">
+            <mat-form-field>
+              <mat-select formControlName="cameraVideo" placeholder="Camera video">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let cameraVideo of cameraVideoService.list" [value]="cameraVideo">{{cameraVideo.value}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-button (click)="onAddCameraVideo()">New C. Video</button>
+          </div>
+        </div>
+        <div class="stepper-button-pannel">
+          <button mat-button matStepperPrevious color="primary">Previous</button>
+          <button mat-button matStepperNext color="primary">Next</button>
+        </div>
+      </mat-step>
+
+
+      <mat-step [stepControl]="powerAutonomy" label="Power and Autonomy" formGroupName="powerAutonomy">
+        <div class="step-container">
+          <div class="form-field">
+            <mat-form-field>
+              <mat-select formControlName="battery" placeholder="Battery">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let battery of batteryService.list" [value]="battery">{{battery.value}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-button (click)="onAddBattery()">New Battery</button>
+          </div>
+
+          <div class="form-field">
+            <mat-form-field>
+              <input matInput formControlName="chargeTime" placeholder="Charge Time">
             </mat-form-field>
           </div>
 
           <div class="form-field">
             <mat-form-field>
-              <input matInput formControlName="length" placeholder="Lenght(mm)">
+              <input matInput formControlName="flightTime" placeholder="Flight time">
             </mat-form-field>
           </div>
 
           <div class="form-field">
             <mat-form-field>
-              <input matInput formControlName="weight" placeholder="Weight(g)">
+              <input matInput formControlName="flightMaximunDistance" placeholder="Flight maximun distance">
             </mat-form-field>
           </div>
         </div>
-      </div>
-    </mat-step>
-
-
-    <mat-step [stepControl]="accessories" label="Accessories" formGroupName="accessories">
-      <div class="step-container">
-        <div class="form-field">
-          <mat-form-field>
-            <mat-select formControlName="rcType" placeholder="RC Type">
-              <mat-option>None</mat-option>
-              <mat-option *ngFor="let rcType of rcTypeService.list" [value]="rcType">{{rcType.value}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <button mat-button (click)="onAddRcType()">New RC Type</button>
+        <div class="stepper-button-pannel">
+          <button mat-button matStepperPrevious color="primary">Previous</button>
+          <button mat-button matStepperNext color="primary">Next</button>
         </div>
+      </mat-step>
 
-        <div class="form-field">
-          <mat-form-field>
-            <mat-select formControlName="cameraPhoto" placeholder="Camera photo">
-              <mat-option>None</mat-option>
-              <mat-option *ngFor="let cameraPhoto of cameraPhotoService.list" [value]="cameraPhoto">{{cameraPhoto.value}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <button mat-button (click)="onAddCameraPhoto()">New C. Photo</button>
+
+      <mat-step [stepControl]="pricing" label="Pricing" formGroupName="pricing">
+        <div class="step-container">
+          <div class="form-field">
+            <mat-form-field>
+              <input matInput formControlName="min" placeholder="Minimum price">
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+
+            <mat-form-field>
+              <input matInput formControlName="max" placeholder="Maximun price">
+            </mat-form-field>
+          </div>
         </div>
-
-        <div class="form-field">
-          <mat-form-field>
-            <mat-select formControlName="cameraVideo" placeholder="Camera video">
-              <mat-option>None</mat-option>
-              <mat-option *ngFor="let cameraVideo of cameraVideoService.list" [value]="cameraVideo">{{cameraVideo.value}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <button mat-button (click)="onAddCameraVideo()">New C. Video</button>
+        <div class="stepper-button-pannel">
+          <button mat-button matStepperPrevious color="primary">Previous</button>
+          <button mat-button matStepperNext color="primary">Next</button>
         </div>
-      </div>
-    </mat-step>
+      </mat-step>
 
 
-    <mat-step [stepControl]="powerAutonomy" label="Power and Autonomy" formGroupName="powerAutonomy">
-      <div class="step-container">
-        <div class="form-field">
-          <mat-form-field>
-            <mat-select formControlName="battery" placeholder="Battery">
-              <mat-option>None</mat-option>
-              <mat-option *ngFor="let battery of batteryService.list" [value]="battery">{{battery.value}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <button mat-button (click)="onAddBattery()">New Battery</button>
+      <mat-step label="Related media">
+        <div class="step-container">
+          <div class="form-field">
+            <shd-array-container title="Videos" [items]="drone.videos"></shd-array-container>
+          </div>
+          <div class="form-field">
+            <shd-array-container title="Pictures" [items]="drone.pictures"></shd-array-container>
+          </div>
+          <div class="form-field">
+            <shd-array-container title="Reviews" [items]="drone.reviews"></shd-array-container>
+          </div>
         </div>
-
-        <div class="form-field">
-          <mat-form-field>
-            <input matInput formControlName="chargeTime" placeholder="Charge Time">
-          </mat-form-field>
+        <div class="stepper-button-pannel">
+          <button mat-button matStepperPrevious color="primary">Previous</button>
         </div>
-
-        <div class="form-field">
-          <mat-form-field>
-            <input matInput formControlName="flightTime" placeholder="Flight time">
-          </mat-form-field>
-        </div>
-
-        <div class="form-field">
-          <mat-form-field>
-            <input matInput formControlName="flightMaximunDistance" placeholder="Flight maximun distance">
-          </mat-form-field>
-        </div>
-      </div>
-    </mat-step>
-
-
-    <mat-step [stepControl]="pricing" label="Pricing" formGroupName="pricing">
-      <div class="step-container">
-        <div class="form-field">
-          <mat-form-field>
-            <input matInput formControlName="min" placeholder="Minimum price">
-          </mat-form-field>
-        </div>
-
-        <div class="form-field">
-
-          <mat-form-field>
-            <input matInput formControlName="max" placeholder="Maximun price">
-          </mat-form-field>
-        </div>
-      </div>
-    </mat-step>
-
-
-    <mat-step label="Related media">
-      <div class="step-container">
-        <div class="form-field">
-          <shd-array-container title="Videos" [items]="drone.videos"></shd-array-container>
-        </div>
-        <div class="form-field">
-          <shd-array-container title="Pictures" [items]="drone.pictures"></shd-array-container>
-        </div>
-        <div class="form-field">
-          <shd-array-container title="Reviews" [items]="drone.reviews"></shd-array-container>
-        </div>
-      </div>
-    </mat-step>
-  </mat-vertical-stepper>
+      </mat-step>
+    </mat-vertical-stepper>
   </form>
-  <p>{{formDrone.status}}</p>
-  <p>{{basic.status}}</p>
-  <p>{{reference.status}}</p>
-  <p>{{features.status}}</p>
-  <p>{{accessories.status}}</p>
-  <p>{{powerAutonomy.status}}</p>
-  <p>{{pricing.status}}</p>
-  <button mat-raised-button (click)="onTest()">Test</button>
+  <div class="stepper-button-pannel">
+    <button mat-raised-button (click)="cancel()">cancel</button>
+    <button mat-raised-button (click)="saveDrone()" [disabled]="!formDrone.valid" color="primary">Save</button>
+  </div>
 </mat-card>

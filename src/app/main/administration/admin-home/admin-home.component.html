@@ -1,5 +1,17 @@
 <shd-title-bar name="Administration Module"></shd-title-bar>
-<div class="container">
-  <app-drone-form></app-drone-form>
-  <app-drone-list></app-drone-list>
-</div>
+
+<mat-sidenav-container [@homeTrigger]="homeState" (@homeTrigger.done)="onHomeDone()">
+  <mat-sidenav mode="side" opened>
+    <div class="sidenav-bar">
+      <h2>Tools</h2>
+      <button (click)="changeForm('droneFormState')" style="width: 100%" mat-button color="primary">Drone Form</button>
+      <button (click)="changeForm('droneListState')" style="width: 100%" mat-button color="primary">Drone List</button>
+      <button (click)="changeForm('usersState')" style="width: 100%" mat-button color="primary">Users</button>
+      <button (click)="quit()" style="width: 100%" mat-button color="primary">Quit</button>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <app-drone-form [@toolTrigger]="droneFormState" (@toolTrigger.done)="onToolDone('droneFormState')" [hidden]="droneFormState == 'inactive'" class="tool-container"></app-drone-form>
+      <app-drone-list [@toolTrigger]="droneListState" (@toolTrigger.done)="onToolDone('droneListState')" [hidden]="droneListState == 'inactive'" class="tool-container"></app-drone-list>
+  </mat-sidenav-content>
+</mat-sidenav-container>
