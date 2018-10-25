@@ -13,5 +13,6 @@
   <mat-sidenav-content>
       <app-drone-form [@toolTrigger]="droneFormState" (@toolTrigger.done)="onToolDone('droneFormState')" [hidden]="droneFormState == 'inactive'" class="tool-container"></app-drone-form>
       <app-drone-list [@toolTrigger]="droneListState" (@toolTrigger.done)="onToolDone('droneListState')" [hidden]="droneListState == 'inactive'" class="tool-container"></app-drone-list>
+      <app-user-form [@toolTrigger]="usersState" (@toolTrigger.done)="onToolDone('usersState')" [hidden]="usersState == 'inactive'" class="tool-container"></app-user-form>
   </mat-sidenav-content>
 </mat-sidenav-container>

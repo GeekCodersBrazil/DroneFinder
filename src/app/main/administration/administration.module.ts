@@ -14,6 +14,7 @@ import { DroneListComponent } from './drone-list/drone-list.component';
 import { CategoryDialogFormComponent } from './basic-dialog-forms/category-dialog-form/category-dialog-form.component';
 import { BrandDialogFormComponent } from './basic-dialog-forms/brand-dialog-form/brand-dialog-form.component';
 import { ValuableAttributeDialogFormComponent } from './basic-dialog-forms/valuable-attribute-dialog-form/valuable-attribute-dialog-form.component';
+import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { ValuableAttributeDialogFormComponent } from './basic-dialog-forms/valua
     DroneListComponent,
     CategoryDialogFormComponent,
     ValuableAttributeDialogFormComponent,
-    BrandDialogFormComponent
+    BrandDialogFormComponent,
+    UserFormComponent
   ],
   entryComponents: [
     DroneFormComponent,

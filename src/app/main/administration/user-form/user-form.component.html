@@ -1,0 +1,16 @@
+<mat-card class="form-container">
+  <mat-card-title color="primary">Users</mat-card-title>
+
+  <mat-list>
+    <mat-list-item *ngFor="let user of GetUsers() | async">
+
+      <mat-icon matListIcon>create</mat-icon>
+     
+      <h3 matLine> {{user.name}} </h3>
+      <p matLine>
+        <span> {{user.id}} </span>
+        <span> {{user.email}} </span>
+      </p>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
