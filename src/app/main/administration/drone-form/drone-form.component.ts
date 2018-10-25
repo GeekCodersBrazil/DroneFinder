@@ -1,7 +1,8 @@
+import { AdminHomeComponent } from './../admin-home/admin-home.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { BrandService } from './../../../core/service/brand.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { CategoryService } from '../../../core/service/category.service';
 
@@ -12,6 +13,8 @@ import { ValuableAttributeDialogFormComponent } from '../basic-dialog-forms/valu
 import { CameraPhotoService } from './../../../core/service/cameraPhoto.Service';
 import { CameraVideoService } from '../../../core/service/cameraVideo.Service';
 import { BatteryService } from './../../../core/service/battery.Service';
+import { DroneService } from './../../../core/service/drone.service';
+
 import { Drone } from 'src/app/core/model/drone.model';
 
 @Component({
@@ -31,6 +34,8 @@ export class DroneFormComponent implements OnInit {
   pricing: FormGroup
   media: FormGroup
 
+  @Input() home: AdminHomeComponent
+
   constructor(private dialog: MatDialog,
     private FormBuilder: FormBuilder,
     public brandService: BrandService,
@@ -38,7 +43,8 @@ export class DroneFormComponent implements OnInit {
     public rcTypeService: RcTypeService,
     public cameraPhotoService: CameraPhotoService,
     public cameraVideoService: CameraVideoService,
-    public batteryService: BatteryService) { }
+    public batteryService: BatteryService,
+    private droneService: DroneService) { }
 
   ngOnInit() {
     let fb = this.FormBuilder
@@ -112,16 +118,23 @@ export class DroneFormComponent implements OnInit {
     this.dialog.open(ValuableAttributeDialogFormComponent, { data: {service: this.batteryService}, width: '500px', height: '270px' });
   }
 
-  onTest() {
-    console.log(this.formDrone.value)
-  }
-
   cancel() {
-
+    this.formDrone.reset()
+    this.home.changeForm('droneListState')
   }
 
   saveDrone() {
-    console.log(this.formDrone.valid)
+    this.drone = {...this.basic.value,
+                  ...this.reference.value,
+                  ...this.features.value,
+                  ...this.accessories.value,
+                  ...this.powerAutonomy.value,
+                  ...this.pricing.value,
+                  videos: this.drone.videos,
+                  photos: this.drone.pictures,
+                  reviews: this.drone.reviews}
+    console.log(this.drone)
+    this.droneService.insertDrone(this.drone);
   }
 
 }

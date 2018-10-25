@@ -28,11 +28,9 @@ export class BrandService {
   }
 
   insertBrand(brand: Brand) {
-    this.firestore.collection(this.path).add(
-      {name: brand.name,
-        brandImageURL: brand.brandImageURL,
-        brandURL: brand.brandURL}
-    )
+    let brandData = {...brand}
+    delete brandData['$id']
+    this.firestore.collection(this.path).add(brandData)
   }
 
   updateBrand(brand: Brand) {

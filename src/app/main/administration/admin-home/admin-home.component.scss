@@ -12,19 +12,23 @@
 
 .tool-container {
   @extend .container;
+  order: 2;
   margin-top: 0px;
   margin-left: auto;
   margin-right: auto;
 }
 
 mat-sidenav-container {
+  position: absolute;
+  left: 0px;
+  top: 110px;
   width: 100%;
-  height:calc(100% - 130px);
+  height:calc(100% - 110px);
 }
 
 mat-sidenav-content {
   background-color: map-get($custom-primary, 50);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
 }
