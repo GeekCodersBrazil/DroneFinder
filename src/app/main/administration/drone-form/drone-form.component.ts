@@ -133,7 +133,6 @@ export class DroneFormComponent implements OnInit {
                   videos: this.drone.videos,
                   photos: this.drone.pictures,
                   reviews: this.drone.reviews}
-    console.log(this.drone)
     this.droneService.insertDrone(this.drone);
   }
 
