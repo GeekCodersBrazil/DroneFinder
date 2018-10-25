@@ -3,3 +3,4 @@ export interface ValuableAttributeService {
   list: ValuableAttribute[]
   insertValue(value: ValuableAttribute)
 }
+//
