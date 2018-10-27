@@ -17,6 +17,7 @@ export class Drone {
   gpsPosition: boolean
   altitudeHold: boolean
   rcType: ValuableAttribute
+  gimbal: ValuableAttribute
   cameraPhoto: ValuableAttribute
   cameraMovie: ValuableAttribute
   fpvType: ValuableAttribute

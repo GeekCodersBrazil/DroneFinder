@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Drone } from '../model/drone.model';
 
@@ -11,21 +13,22 @@ export class DroneService {
 
   readonly path: string = 'drones'
 
-  droneList: Drone[]
+  collection: AngularFirestoreCollection<Drone>
+  observableList: Observable<Drone[]>
 
   constructor(private firestore: AngularFirestore) {
-    this.fetchData()
+    this.fetchObservable()
   }
 
-  fetchData() {
-    this.firestore.collection(this.path).snapshotChanges().subscribe(item => {
-      this.droneList = []
-      item.forEach(element => {
-        var dataPayload = element.payload.doc.data()
-        dataPayload["$id"] = element.payload.doc.id
-        this.droneList.push(dataPayload as Drone)
-      })
-    })
+  fetchObservable() {
+    this.collection = this.firestore.collection<Drone>(this.path)
+    this.observableList = this.collection.snapshotChanges().pipe(
+      map(items => items.map(item => {
+        const data: Drone = item.payload.doc.data()
+        data["$id"] = item.payload.doc.id;
+        return data
+      }))
+    )
   }
 
   insertDrone(drone: Drone) {

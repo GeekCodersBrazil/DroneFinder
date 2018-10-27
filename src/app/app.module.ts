@@ -27,11 +27,8 @@ import { AuthService } from './core/service/auth.service';
 import { AdminGuard } from './core/guard/admin.guard';
 import { CategoryService } from './core/service/category.service';
 import { BrandService } from './core/service/brand.service';
-import { RcTypeService } from './core/service/rcType.Service';
-import { CameraPhotoService } from './core/service/cameraPhoto.Service';
-import { CameraVideoService } from './core/service/cameraVideo.Service';
-import { BatteryService } from './core/service/battery.Service';
 import { DroneService } from './core/service/drone.service';
+import { ValuableAttributeService } from './core/service/valuable-attribute.Service';
 
 @NgModule({
   declarations: [
@@ -62,11 +59,8 @@ import { DroneService } from './core/service/drone.service';
     AdminGuard,
     BrandService,
     CategoryService,
-    RcTypeService,
-    CameraPhotoService,
-    CameraVideoService,
-    BatteryService,
-    DroneService
+    DroneService,
+    ValuableAttributeService
    ],
   bootstrap: [ AppComponent ]
 })

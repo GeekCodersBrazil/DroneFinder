@@ -1,7 +1,9 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { AngularFirestore, } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection, } from '@angular/fire/firestore';
 
 import { Brand } from './../model/brand.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -10,21 +12,22 @@ export class BrandService {
 
   readonly path: string = 'brands'
 
-  brandList: Brand[]
+  collection: AngularFirestoreCollection<Brand>
+  observableList: Observable<Brand[]>
 
   constructor(private firestore: AngularFirestore) {
-    this.fetchData()
+    this.fetchObservable()
   }
 
-  fetchData() {
-    this.firestore.collection(this.path).snapshotChanges().subscribe(item => {
-      this.brandList = []
-      item.forEach(element => {
-        var dataPayload = element.payload.doc.data()
-        dataPayload["$id"] = element.payload.doc.id
-        this.brandList.push(dataPayload as Brand)
-      })
-    })
+  fetchObservable() {
+    this.collection = this.firestore.collection<Brand>(this.path)
+    this.observableList = this.collection.snapshotChanges().pipe(
+      map(items => items.map(item => {
+        const data = item.payload.doc.data() as Brand
+        const id = item.payload.doc.id;
+        return { id, ...data }
+      }))
+    )
   }
 
   insertBrand(brand: Brand) {
@@ -43,10 +46,6 @@ export class BrandService {
 
   deleteBrand($id: string) {
     this.firestore.doc(`${this.path}/${$id}`).delete()
-  }
-
-  getBrandById($id: string): Brand {
-    return this.brandList.find(brand => brand.$id == $id)
   }
 
 }

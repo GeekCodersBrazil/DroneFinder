@@ -8,11 +8,8 @@ import { CategoryService } from '../../../core/service/category.service';
 
 import { BrandDialogFormComponent } from '../basic-dialog-forms/brand-dialog-form/brand-dialog-form.component';
 import { CategoryDialogFormComponent } from '../basic-dialog-forms/category-dialog-form/category-dialog-form.component';
-import { RcTypeService } from '../../../core/service/rcType.Service';
 import { ValuableAttributeDialogFormComponent } from '../basic-dialog-forms/valuable-attribute-dialog-form/valuable-attribute-dialog-form.component';
-import { CameraPhotoService } from './../../../core/service/cameraPhoto.Service';
-import { CameraVideoService } from '../../../core/service/cameraVideo.Service';
-import { BatteryService } from './../../../core/service/battery.Service';
+import { ValuableAttributeService } from './../../../core/service/valuable-attribute.Service';
 import { DroneService } from './../../../core/service/drone.service';
 
 import { Drone } from 'src/app/core/model/drone.model';
@@ -40,10 +37,7 @@ export class DroneFormComponent implements OnInit {
     private FormBuilder: FormBuilder,
     public brandService: BrandService,
     public categoryService: CategoryService,
-    public rcTypeService: RcTypeService,
-    public cameraPhotoService: CameraPhotoService,
-    public cameraVideoService: CameraVideoService,
-    public batteryService: BatteryService,
+    public valuableAttributeService: ValuableAttributeService,
     private droneService: DroneService) { }
 
   ngOnInit() {
@@ -72,7 +66,8 @@ export class DroneFormComponent implements OnInit {
       accessories: fb.group({
         rcType: [''],
         cameraPhoto: [''],
-        cameraVideo: ['']
+        cameraVideo: [''],
+        gimbal: ['']
       }),
       powerAutonomy: fb.group({
         battery: ['', Validators.required],
@@ -102,20 +97,8 @@ export class DroneFormComponent implements OnInit {
     this.dialog.open(CategoryDialogFormComponent, { width: '500px', height: '220px' });
   }
 
-  onAddRcType() {
-    this.dialog.open(ValuableAttributeDialogFormComponent, { data: {service: this.rcTypeService}, width: '500px', height: '270px' });
-  }
-
-  onAddCameraPhoto() {
-    this.dialog.open(ValuableAttributeDialogFormComponent, { data: {service: this.cameraPhotoService}, width: '500px', height: '270px' });
-  }
-
-  onAddCameraVideo() {
-    this.dialog.open(ValuableAttributeDialogFormComponent, { data: {service: this.cameraVideoService}, width: '500px', height: '270px' });
-  }
-
-  onAddBattery() {
-    this.dialog.open(ValuableAttributeDialogFormComponent, { data: {service: this.batteryService}, width: '500px', height: '270px' });
+  onAddValuableAttribute(path: string) {
+    this.dialog.open(ValuableAttributeDialogFormComponent, { data: {path: path}, width: '500px', height: '270px' });
   }
 
   cancel() {

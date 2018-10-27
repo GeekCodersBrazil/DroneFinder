@@ -14,7 +14,7 @@
             <mat-form-field>
               <mat-select formControlName="brand" placeholder="Brand">
                 <mat-option>None</mat-option>
-                <mat-option *ngFor="let brand of brandService.brandList" [value]="brand">{{brand.name}}</mat-option>
+                <mat-option *ngFor="let brand of brandService.observableList | async" [value]="brand">{{brand.name}}</mat-option>
               </mat-select>
             </mat-form-field>
             <button mat-button (click)="onAddBrand()">New Brand</button>
@@ -24,7 +24,7 @@
             <mat-form-field>
               <mat-select formControlName="category" placeholder="Category">
                 <mat-option>None</mat-option>
-                <mat-option *ngFor="let category of categoryService.categoryList" [value]="category">{{category}}</mat-option>
+                <mat-option *ngFor="let category of categoryService.observableList | async" [value]="category">{{category}}</mat-option>
               </mat-select>
             </mat-form-field>
             <button mat-button (click)="onAddCategory()">New Category</button>
@@ -112,32 +112,43 @@
             <mat-form-field>
               <mat-select formControlName="rcType" placeholder="RC Type">
                 <mat-option>None</mat-option>
-                <mat-option *ngFor="let rcType of rcTypeService.list" [value]="rcType">{{rcType.value}}</mat-option>
+                <mat-option *ngFor="let rcType of valuableAttributeService.observableList['rcType'] | async" [value]="rcType">{{rcType.value}}</mat-option>
               </mat-select>
             </mat-form-field>
-            <button mat-button (click)="onAddRcType()">New RC Type</button>
+            <button mat-button (click)="onAddValuableAttribute('rcType')">New RC Type</button>
           </div>
 
           <div class="form-field">
             <mat-form-field>
               <mat-select formControlName="cameraPhoto" placeholder="Camera photo">
                 <mat-option>None</mat-option>
-                <mat-option *ngFor="let cameraPhoto of cameraPhotoService.list" [value]="cameraPhoto">{{cameraPhoto.value}}</mat-option>
+                <mat-option *ngFor="let cameraPhoto of valuableAttributeService.observableList['cameraPhoto'] | async" [value]="cameraPhoto">{{cameraPhoto.value}}</mat-option>
               </mat-select>
             </mat-form-field>
-            <button mat-button (click)="onAddCameraPhoto()">New C. Photo</button>
+            <button mat-button (click)="onAddValuableAttribute('cameraPhoto')">New C. Photo</button>
           </div>
 
           <div class="form-field">
             <mat-form-field>
               <mat-select formControlName="cameraVideo" placeholder="Camera video">
                 <mat-option>None</mat-option>
-                <mat-option *ngFor="let cameraVideo of cameraVideoService.list" [value]="cameraVideo">{{cameraVideo.value}}</mat-option>
+                <mat-option *ngFor="let cameraVideo of valuableAttributeService.observableList['cameraVideo'] | async" [value]="cameraVideo">{{cameraVideo.value}}</mat-option>
               </mat-select>
             </mat-form-field>
-            <button mat-button (click)="onAddCameraVideo()">New C. Video</button>
+            <button mat-button (click)="onAddValuableAttribute('cameraVideo')">New C. Video</button>
+          </div>
+
+          <div class="form-field">
+            <mat-form-field>
+              <mat-select formControlName="gimbal" placeholder="Gimbal">
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let gimbal of valuableAttributeService.observableList['gimbal'] | async" [value]="gimbal">{{gimbal.value}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-button (click)="onAddValuableAttribute('gimbal')">New Gimbal</button>
           </div>
         </div>
+
         <div class="stepper-button-pannel">
           <button mat-button matStepperPrevious color="primary">Previous</button>
           <button mat-button matStepperNext color="primary">Next</button>
@@ -151,10 +162,10 @@
             <mat-form-field>
               <mat-select formControlName="battery" placeholder="Battery">
                 <mat-option>None</mat-option>
-                <mat-option *ngFor="let battery of batteryService.list" [value]="battery">{{battery.value}}</mat-option>
+                <mat-option *ngFor="let battery of valuableAttributeService.observableList['battery'] | async" [value]="battery">{{battery.value}}</mat-option>
               </mat-select>
             </mat-form-field>
-            <button mat-button (click)="onAddBattery()">New Battery</button>
+            <button mat-button (click)="onAddValuableAttribute('battery')">New Battery</button>
           </div>
 
           <div class="form-field">
