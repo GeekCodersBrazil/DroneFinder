@@ -9,24 +9,24 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
- 
+
   readonly path: string = 'users'
   collectionUser: AngularFirestoreCollection<User>;
   observableUser: Observable<any>;
   subscription: any;
 
-  constructor(private firestore: AngularFirestore) { 
+  constructor(private firestore: AngularFirestore) {
 
-    this.subscription = this.firestore.collection<User>(this.path)
+    /*this.subscription = this.firestore.collection<User>(this.path)
     .snapshotChanges()
     .subscribe(snap =>{
-    });
+    });*/
 
     this.fetchData();
   }
 
   public fetchData() {
-    this.collectionUser = this.firestore.collection<User>(this.path); 
+    this.collectionUser = this.firestore.collection<User>(this.path);
     this.observableUser = this.collectionUser.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as User;
@@ -45,17 +45,13 @@ export class UserService {
         if (snap.length == 0)
         {
           var newUser = new User();
-    
+
           newUser.name = name;
           newUser.email = email;
           newUser.isAdmin = false;
-          
+
           this.collectionUser.add({...newUser});
         }
     });
-
-   
   }
-
-
 }
