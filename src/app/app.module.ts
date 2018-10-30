@@ -28,6 +28,7 @@ import { AdminGuard } from './core/guard/admin.guard';
 import { CategoryService } from './core/service/category.service';
 import { BrandService } from './core/service/brand.service';
 import { DroneService } from './core/service/drone.service';
+import { UserService } from './core/service/user.service';
 import { ValuableAttributeService } from './core/service/valuable-attribute.Service';
 
 @NgModule({
@@ -55,8 +56,6 @@ import { ValuableAttributeService } from './core/service/valuable-attribute.Serv
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    AuthService,
-    AdminGuard,
     BrandService,
     CategoryService,
     DroneService,
