@@ -15,6 +15,7 @@ import { CategoryDialogFormComponent } from './basic-dialog-forms/category-dialo
 import { BrandDialogFormComponent } from './basic-dialog-forms/brand-dialog-form/brand-dialog-form.component';
 import { ValuableAttributeDialogFormComponent } from './basic-dialog-forms/valuable-attribute-dialog-form/valuable-attribute-dialog-form.component';
 import { UserFormComponent } from './user-form/user-form.component';
+import { CoreModule } from '../../core/core.module';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { UserFormComponent } from './user-form/user-form.component';
     MatCheckboxModule,
     MatStepperModule,
     MatSidenavModule,
+    CoreModule,
 
     SharedModule
   ],

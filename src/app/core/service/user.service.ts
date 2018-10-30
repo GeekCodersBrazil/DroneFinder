@@ -1,25 +1,31 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../model/user.model';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  
-
+ 
   readonly path: string = 'users'
   collectionUser: AngularFirestoreCollection<User>;
   observableUser: Observable<any>;
+  subscription: any;
 
   constructor(private firestore: AngularFirestore) { 
+
+    this.subscription = this.firestore.collection<User>(this.path)
+    .snapshotChanges()
+    .subscribe(snap =>{
+    });
 
     this.fetchData();
   }
 
-  fetchData() {
+  public fetchData() {
     this.collectionUser = this.firestore.collection<User>(this.path); 
     this.observableUser = this.collectionUser.snapshotChanges().pipe(
       map(actions => actions.map(a => {
@@ -29,4 +35,27 @@ export class UserService {
       }))
     );
   }
+
+
+  public addUser(name: string, email: string) : void {
+
+    this.firestore.collection<User>(this.path, ref => ref.where('email', '==', email))
+    .snapshotChanges()
+    .subscribe(snap =>{
+        if (snap.length == 0)
+        {
+          var newUser = new User();
+    
+          newUser.name = name;
+          newUser.email = email;
+          newUser.isAdmin = false;
+          
+          this.collectionUser.add({...newUser});
+        }
+    });
+
+   
+  }
+
+
 }

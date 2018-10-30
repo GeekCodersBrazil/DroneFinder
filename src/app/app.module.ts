@@ -32,6 +32,7 @@ import { CameraPhotoService } from './core/service/cameraPhoto.Service';
 import { CameraVideoService } from './core/service/cameraVideo.Service';
 import { BatteryService } from './core/service/battery.Service';
 import { DroneService } from './core/service/drone.service';
+import { UserService } from './core/service/user.service';
 
 @NgModule({
   declarations: [
@@ -58,8 +59,6 @@ import { DroneService } from './core/service/drone.service';
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
-    AuthService,
-    AdminGuard,
     BrandService,
     CategoryService,
     RcTypeService,
