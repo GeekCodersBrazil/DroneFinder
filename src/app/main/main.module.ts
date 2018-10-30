@@ -1,4 +1,4 @@
-import { MatToolbarModule, MatCardModule, MatButtonModule, MatIconModule, MatFormFieldModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatDividerModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,6 +18,7 @@ import { DroneListComponent } from './administration/drone-list/drone-list.compo
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
+    MatDividerModule,
 
     SharedModule
   ],

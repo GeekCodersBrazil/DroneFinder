@@ -5,9 +5,11 @@
 
 .sidenav-bar {
   align-items: center;
-  width: 150px;
+  width: 200px;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  margin: 0px;
 }
 
 .tool-container {
@@ -21,13 +23,13 @@
 mat-sidenav-container {
   position: absolute;
   left: 0px;
-  top: 110px;
+  top: 0px;
   width: 100%;
-  height:calc(100% - 110px);
+  height: 100%;
 }
 
 mat-sidenav-content {
-  background-color: map-get($custom-primary, 50);
+  background-color: map-get($mat-grey, 100);
   display: flex;
   flex-direction: column;
   align-items: flex-start;

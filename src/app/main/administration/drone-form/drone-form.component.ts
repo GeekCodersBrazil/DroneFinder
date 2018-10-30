@@ -31,8 +31,6 @@ export class DroneFormComponent implements OnInit {
   pricing: FormGroup
   media: FormGroup
 
-  @Input() home: AdminHomeComponent
-
   constructor(private dialog: MatDialog,
     private FormBuilder: FormBuilder,
     public brandService: BrandService,
@@ -103,7 +101,6 @@ export class DroneFormComponent implements OnInit {
 
   cancel() {
     this.formDrone.reset()
-    this.home.changeForm('droneListState')
   }
 
   saveDrone() {
