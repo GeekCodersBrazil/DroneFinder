@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -8,20 +10,21 @@ export class CategoryService {
 
   readonly path: string = 'categories'
 
-  categoryList: string[]
+  collection: AngularFirestoreCollection<string>
+  observableList: Observable<string[]>
 
   constructor(private firestore: AngularFirestore) {
-    this.fetchData()
+    this.fetchObservable()
   }
 
-  fetchData() {
-    this.firestore.collection(this.path).snapshotChanges().subscribe(item => {
-      this.categoryList = []
-      item.forEach(element => {
-        var dataPayload = element.payload.doc.data()
-        this.categoryList.push(dataPayload['name'])
-      })
-    })
+  fetchObservable() {
+    this.collection = this.firestore.collection<string>(this.path)
+    this.observableList = this.collection.snapshotChanges().pipe(
+      map(items => items.map(item => {
+        const data = item.payload.doc.data() as string
+        return data['name']
+      }))
+    )
   }
 
   insertCategory(category: string) {

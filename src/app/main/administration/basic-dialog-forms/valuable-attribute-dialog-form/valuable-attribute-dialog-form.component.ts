@@ -1,8 +1,8 @@
+import { ValuableAttributeService } from './../../../../core/service/valuable-attribute.Service';
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { ValuableAttribute } from '../../../../core/model/subtypes/valuable-attribute';
-import { ValuableAttributeService } from '../../../../core/service/valuable-attribute-service';
 
 @Component({
   selector: 'app-valuable-attribute-dialog-form',
@@ -12,10 +12,10 @@ import { ValuableAttributeService } from '../../../../core/service/valuable-attr
 export class ValuableAttributeDialogFormComponent implements OnInit {
 
   value: ValuableAttribute = new ValuableAttribute()
-  service: ValuableAttributeService
+  path: string
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<ValuableAttributeDialogFormComponent>) {
-    this.service = data.service
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<ValuableAttributeDialogFormComponent>, public service: ValuableAttributeService) {
+    this.path = data.path
     console.log(this.service)
   }
 
@@ -24,7 +24,7 @@ export class ValuableAttributeDialogFormComponent implements OnInit {
   }
 
   onOkClick() {
-    this.service.insertValue(this.value)
+    this.service.insertValue(this.path, this.value)
     this.dialogRef.close();
   }
 
