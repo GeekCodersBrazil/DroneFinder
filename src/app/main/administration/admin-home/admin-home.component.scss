@@ -9,7 +9,11 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin: 0px;
+}
+
+mat-sidenav {
+  width: 200px;
+  height: 100%;
 }
 
 .tool-container {

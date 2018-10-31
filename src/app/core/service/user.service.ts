@@ -39,7 +39,7 @@ export class UserService {
 
   public addUser(name: string, email: string) : void {
 
-    this.firestore.collection<User>(this.path, ref => ref.where('email', '==', email))
+    this.subscription = this.firestore.collection<User>(this.path, ref => ref.where('email', '==', email))
     .snapshotChanges()
     .subscribe(snap =>{
         if (snap.length == 0)
@@ -53,5 +53,6 @@ export class UserService {
           this.collectionUser.add({...newUser});
         }
     });
+    this.subscription.unsubscribe()
   }
 }

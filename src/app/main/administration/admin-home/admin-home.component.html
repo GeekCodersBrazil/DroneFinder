@@ -1,19 +1,22 @@
-<mat-sidenav-container hasBackdrop = "false">
+<mat-sidenav-container hasBackdrop="false">
   <mat-sidenav #sidenav mode="side" color="primary" closed>
     <mat-toolbar class="sidenav-bar" color="primary">
-      <h2>Tools</h2>
-      <div style="width: 100%; height: 20px"><mat-divider></mat-divider></div>
-      <div style="border-bottom-width: 2px; height: 20px"></div>
-      <button style="width: 100%" mat-button>Drone Form</button>
-      <button style="width: 100%" mat-button>Drone List</button>
-      <button style="width: 100%" mat-button>Users</button>
-      <button (click)="quit()" style="width: 100%" mat-button>Quit</button>
+      <div class="sidenav-bar">
+        <h2>Tools</h2>
+        <div style="width: 100%; height: 20px">
+          <mat-divider></mat-divider>
+        </div>
+        <button style="width: 100%" mat-button>Drone Form</button>
+        <button style="width: 100%" mat-button>Drone List</button>
+        <button style="width: 100%" mat-button>Users</button>
+        <button (click)="quit()" style="width: 100%" mat-button>Quit</button>
+      </div>
     </mat-toolbar>
   </mat-sidenav>
   <mat-sidenav-content>
-      <div style="order: 1; height: 20px"></div>
-      <app-drone-form class="tool-container"></app-drone-form>
-      <app-drone-list class="tool-container"></app-drone-list>
-      <app-user-form class="tool-container"></app-user-form>
+    <div style="order: 1; height: 20px"></div>
+    <app-drone-form class="tool-container"></app-drone-form>
+    <app-drone-list class="tool-container"></app-drone-list>
+    <app-user-form class="tool-container"></app-user-form>
   </mat-sidenav-content>
 </mat-sidenav-container>
