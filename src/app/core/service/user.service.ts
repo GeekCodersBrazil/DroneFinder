@@ -2,7 +2,8 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../model/user.model';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, merge } from 'rxjs/operators';
+
 
 
 @Injectable({
@@ -14,6 +15,7 @@ export class UserService {
   collectionUser: AngularFirestoreCollection<User>;
   observableUser: Observable<any>;
   subscription: any;
+  defaultToggleOption: boolean = false;
 
   constructor(private firestore: AngularFirestore) {
 
@@ -36,8 +38,15 @@ export class UserService {
     );
   }
 
+  public updateUser(isAdmin: boolean, idUser: string) : void{
+    
+    this.collectionUser.doc(idUser).set({
+      isAdmin: isAdmin
+    }, {merge: true});
 
-  public addUser(name: string, email: string) : void {
+  }
+
+  public addUser(name: string, email: string, photoURL: string) : void {
 
     this.subscription = this.firestore.collection<User>(this.path, ref => ref.where('email', '==', email))
     .snapshotChanges()
@@ -49,10 +58,13 @@ export class UserService {
           newUser.name = name;
           newUser.email = email;
           newUser.isAdmin = false;
+          newUser.photoURL= photoURL;
 
           this.collectionUser.add({...newUser});
         }
     });
-    this.subscription.unsubscribe()
+   // this.subscription.unsubscribe()
   }
+
+  
 }

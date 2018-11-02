@@ -3,7 +3,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatCardModule, MatButtonModule, MatIconModule, MatListModule, MatInputModule, MatDatepickerModule, MatOptionModule, MatSelectModule, MatDialogModule, MatCheckboxModule, MatStepperModule, MatSidenavModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatButtonModule, 
+  MatIconModule, MatListModule, MatInputModule, MatDatepickerModule, 
+  MatOptionModule, MatSelectModule, MatDialogModule, MatCheckboxModule, 
+  MatStepperModule, MatSidenavModule, MatSlideToggleModule  } from '@angular/material';
 
 import { SharedModule } from './../../shared/shared.module';
 
@@ -40,7 +43,9 @@ import { CoreModule } from '../../core/core.module';
     MatSidenavModule,
     CoreModule,
 
-    SharedModule
+    SharedModule,
+
+    MatSlideToggleModule
   ],
   declarations: [
     AdminHomeComponent,
