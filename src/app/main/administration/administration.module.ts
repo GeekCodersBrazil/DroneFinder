@@ -1,9 +1,10 @@
+import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatCardModule, MatButtonModule, MatIconModule, MatListModule, MatInputModule, MatDatepickerModule, MatOptionModule, MatSelectModule, MatDialogModule, MatCheckboxModule, MatStepperModule, MatSidenavModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatButtonModule, MatIconModule, MatListModule, MatInputModule, MatDatepickerModule, MatOptionModule, MatSelectModule, MatDialogModule, MatCheckboxModule, MatStepperModule, MatSidenavModule, MatButtonToggleModule } from '@angular/material';
 
 import { SharedModule } from './../../shared/shared.module';
 
@@ -23,6 +24,7 @@ import { CoreModule } from '../../core/core.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
 
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -38,6 +40,7 @@ import { CoreModule } from '../../core/core.module';
     MatCheckboxModule,
     MatStepperModule,
     MatSidenavModule,
+    MatButtonToggleModule,
     CoreModule,
 
     SharedModule
