@@ -13,18 +13,23 @@ export class AdminHomeComponent implements OnInit {
 
   @ViewChild('sidenav') sidenav: MatSidenav
 
+  selectedTool: string = 'none'
+
   constructor(public authService: AuthService, private router: Router) { }
 
   drones() {
     this.router.navigate(['/admin/drones'])
+    this.selectedTool = 'drones'
   }
 
   formTEMP() {
     this.router.navigate(['/admin/formTEMP'])
+    this.selectedTool = 'formTEMP'
   }
 
   users() {
     this.router.navigate(['/admin/users'])
+    this.selectedTool = 'users'
   }
 
   ngOnInit() {

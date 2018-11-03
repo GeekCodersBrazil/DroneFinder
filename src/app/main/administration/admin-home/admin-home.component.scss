@@ -4,24 +4,46 @@
 @include mat-core();
 
 .sidenav-bar {
+  background-color: mat-color($primary, 500);
+  color: mat-contrast($primary, 500);
   align-items: center;
   width: 200px;
   height: 100%;
   display: flex;
   flex-direction: column;
+  text-align: end;
 }
 
-mat-sidenav {
-  width: 200px;
-  height: 100%;
+.tool-button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  border-left: mat-color($accent, 500);
+  border-left-width: 5px;
+  border-left-style: none;
 }
 
-.tool-container {
-  @extend .container;
-  order: 2;
-  margin-top: 0px;
-  margin-left: auto;
-  margin-right: auto;
+.tool-button:hover {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  border-left: mat-color($accent, 500);
+  border-left-width: 5px;
+  border-left-style: solid;
+}
+
+.tool-button-selected {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  background-color: mat-color($primary, 700);
+  color: mat-contrast($primary, 700);
+  border-left: mat-color($accent, 500);
+  border-left-width: 5px;
+  border-left-style: solid;
 }
 
 mat-sidenav-container {
@@ -33,7 +55,7 @@ mat-sidenav-container {
 }
 
 mat-sidenav-content {
-  background-color: map-get($mat-grey, 100);
+  background-color: mat-color($mat-grey, 100);
   display: flex;
   flex-direction: column;
   align-items: flex-start;

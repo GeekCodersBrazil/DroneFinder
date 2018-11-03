@@ -1,25 +1,18 @@
 <mat-sidenav-container hasBackdrop="false">
   <mat-sidenav #sidenav mode="side" color="primary" closed>
-    <mat-toolbar class="sidenav-bar" color="primary">
-      <div class="sidenav-bar">
-        <h2>Tools</h2>
-        <div style="width: 100%; height: 20px">
-          <mat-divider></mat-divider>
-        </div>
-        <mat-button-toggle-group name="section" style="display: flex; flex-direction: column; width: 200px">
-          <mat-button-toggle (click)="drones()" style="width: 100%; background-color: transparent; color: white;">Drones</mat-button-toggle>
-          <mat-button-toggle (click)="formTEMP()" style="width: 100%; background-color: transparent; color: white;">Drone Form</mat-button-toggle>
-          <mat-button-toggle (click)="users()" style="width: 100%; background-color: transparent; color: white;">Users</mat-button-toggle>
-          <mat-button-toggle (click)="quit()" style="width: 100%; background-color: transparent; color: white;">Quit</mat-button-toggle>
-        </mat-button-toggle-group>
+    <div class="sidenav-bar">
+      <h2>Tools</h2>
+      <div style="width: 100%; height: 20px">
+        <mat-divider></mat-divider>
       </div>
-    </mat-toolbar>
+      <button (click)="drones()" mat-button [ngClass]="{'tool-button-selected': selectedTool=='drones', 'tool-button': selectedTool != 'drones'}"><mat-icon style="width: 30%;" svgIcon="drone"></mat-icon>Drones</button>
+      <button (click)="formTEMP()" mat-button [ngClass]="{'tool-button-selected': selectedTool=='formTEMP', 'tool-button': selectedTool != 'formTEMP'}"><mat-icon style="width: 30%;" svgIcon="drone"></mat-icon>Form</button>
+      <button (click)="users()" mat-button [ngClass]="{'tool-button-selected': selectedTool=='users', 'tool-button': selectedTool != 'users'}"><mat-icon style="width: 30%;" svgIcon="users"></mat-icon>Users</button>
+      <button (click)="quit()" mat-button class="tool-button"><mat-icon style="width: 30%;" svgIcon="quit"></mat-icon>Quit</button>
+      </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <div style="order: 1; height: 20px"></div>
     <router-outlet></router-outlet>
-    <!--app-drone-form class="tool-container"></app-drone-form>
-    <app-drone-list class="tool-container"></app-drone-list>
-    <app-user-form-- class="tool-container"></app-user-form-->
   </mat-sidenav-content>
 </mat-sidenav-container>

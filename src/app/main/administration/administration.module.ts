@@ -19,12 +19,17 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { BrandListComponent } from './brand-list/brand-list.component';
 import { CoreModule } from '../../core/core.module';
 
+import { MatIconRegistry } from "@angular/material";
+import { DomSanitizer } from "@angular/platform-browser";
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    HttpClientModule,
 
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -64,4 +69,10 @@ import { CoreModule } from '../../core/core.module';
     AdminHomeComponent, BrandListComponent, DroneListComponent
   ]
 })
-export class AdministrationModule { }
+export class AdministrationModule {
+  constructor (private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
+    this.iconRegistry.addSvgIcon('drone', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/drone.svg'))
+    this.iconRegistry.addSvgIcon('users', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/users.svg'))
+    this.iconRegistry.addSvgIcon('quit', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/signout.svg'))
+  }
+}

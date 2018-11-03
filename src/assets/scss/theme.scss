@@ -69,7 +69,7 @@ $dronefinder-primary: (
 
 
 // Custom background theme pallete
-$my-custom-theme-background: (
+$custom-theme-background: (
   status-bar: map_get($mat-grey, 300),
   app-bar:    map_get($mat-grey, 200),
   background: map_get($mat-grey, 50),
@@ -87,7 +87,7 @@ $my-custom-theme-background: (
 );
 
 // Custom foreground theme pallete
-$my-custom-theme-foreground: (
+$custom-theme-foreground: (
   base:              black,
   divider:           $dark-dividers,
   dividers:          $dark-dividers,
@@ -117,9 +117,9 @@ $my-custom-theme-foreground: (
   );
 }
 
-$custom-primary: mat-palette($dronefinder-primary, 600);
-$custom-accent:  mat-palette($dronefinder-accent, 100);
-$custom-warn:    mat-palette($mat-red);
+$primary: mat-palette($dronefinder-primary, 600);
+$accent:  mat-palette($dronefinder-accent, 700);
+$warn:    mat-palette($mat-red);
 
-$custom-theme: create-custom-theme($custom-primary, $custom-accent, $custom-warn, $my-custom-theme-foreground, $my-custom-theme-background);
+$custom-theme: create-custom-theme($primary, $accent, $warn, $custom-theme-foreground, $custom-theme-background);
 @include angular-material-theme($custom-theme);
