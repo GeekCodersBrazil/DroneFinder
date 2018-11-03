@@ -15,6 +15,18 @@ export class AdminHomeComponent implements OnInit {
 
   constructor(public authService: AuthService, private router: Router) { }
 
+  drones() {
+    this.router.navigate(['/admin/drones'])
+  }
+
+  formTEMP() {
+    this.router.navigate(['/admin/formTEMP'])
+  }
+
+  users() {
+    this.router.navigate(['/admin/users'])
+  }
+
   ngOnInit() {
     setTimeout(()=>{ this.sidenav.open() }, 200)
   }
