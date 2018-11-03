@@ -2,6 +2,7 @@ import { UserService } from './../../../core/service/user.service';
 import { User } from './../../../core/model/user.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { MatSlideToggleChange } from '@angular/material';
 
 @Component({
   selector: 'app-user-form',
@@ -24,5 +25,11 @@ export class UserFormComponent implements OnInit {
 
     return this.userService.observableUser;
   }
+
+  public toggle(event: MatSlideToggleChange, userId: string) {
+    
+    this.userService.updateUser(event.checked, userId);
+    
+}
  
 }

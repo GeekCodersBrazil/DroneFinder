@@ -20,8 +20,7 @@ export class AuthService {
     this.fbAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then(result => {
       this.router.navigate(['/home']);
-
-      this.userService.addUser(result.user.displayName, result.user.email);
+      this.userService.addUser(result.user.displayName, result.user.email, result.user.photoURL);
 
     })
     .catch (error => console.log('auth error: ' , error))

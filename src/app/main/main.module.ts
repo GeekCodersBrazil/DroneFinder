@@ -1,4 +1,6 @@
-import { MatToolbarModule, MatCardModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatDividerModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatButtonModule,
+   MatIconModule, MatFormFieldModule, MatDividerModule, 
+   MatTooltipModule, MatSlideToggleModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,8 +21,9 @@ import { CoreModule } from '../core/core.module';
     MatFormFieldModule,
     MatDividerModule,
     CoreModule,
-
-    SharedModule
+    MatTooltipModule,
+    SharedModule,
+    MatSlideToggleModule
   ],
   declarations: [
     HomeComponent,

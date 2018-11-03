@@ -1,16 +1,26 @@
-<mat-card class="form-container">
-  <mat-card-title color="primary">Users</mat-card-title>
+<!-- <div>
+  <input type="text" width="100%">
+</div> -->
+<mat-card>
+    <mat-card-title color="primary">Users</mat-card-title>
+<div class="container">
+<div fxLayout="row" fxFlex="25%" style="padding-top:10px" *ngFor="let user of GetUsers() | async">
+    <mat-card class="example-card" >
+       <mat-card-header >
+          <img mat-card-avatar src={{user.photoURL}}>
+          <mat-card-title>{{user.name}}</mat-card-title>
+          <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
+          
+        </mat-card-header>
+       
+       
+        <mat-card-actions>
+          <mat-slide-toggle checked={{user.isAdmin}} (change)="toggle($event, user.id)">Is Admin</mat-slide-toggle>
+        </mat-card-actions>
+      </mat-card>
 
-  <mat-list>
-    <mat-list-item *ngFor="let user of GetUsers() | async">
+      
+</div>
 
-      <mat-icon matListIcon>create</mat-icon>
-     
-      <h3 matLine> {{user.name}} </h3>
-      <p matLine>
-        <span> {{user.id}} </span>
-        <span> {{user.email}} </span>
-      </p>
-    </mat-list-item>
-  </mat-list>
+</div>
 </mat-card>
