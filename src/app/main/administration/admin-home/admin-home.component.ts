@@ -17,6 +17,11 @@ export class AdminHomeComponent implements OnInit {
 
   constructor(public authService: AuthService, private router: Router) { }
 
+  selectTool(tool: string) {
+    this.router.navigate(['/admin/' + tool])
+    this.selectedTool = tool
+  }
+
   drones() {
     this.router.navigate(['/admin/drones'])
     this.selectedTool = 'drones'

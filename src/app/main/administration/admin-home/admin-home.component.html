@@ -1,18 +1,19 @@
 <mat-sidenav-container hasBackdrop="false">
   <mat-sidenav #sidenav mode="side" color="primary" closed>
     <div class="sidenav-bar">
-      <h2>Tools</h2>
-      <div style="width: 100%; height: 20px">
+      <div style="height: 100px;"></div>
+      <div style="width: 80%; height: 40px;">
         <mat-divider></mat-divider>
+        <h3>Administration</h3>
       </div>
-      <button (click)="drones()" mat-button [ngClass]="{'tool-button-selected': selectedTool=='drones', 'tool-button': selectedTool != 'drones'}"><mat-icon style="width: 30%;" svgIcon="drone"></mat-icon>Drones</button>
-      <button (click)="formTEMP()" mat-button [ngClass]="{'tool-button-selected': selectedTool=='formTEMP', 'tool-button': selectedTool != 'formTEMP'}"><mat-icon style="width: 30%;" svgIcon="drone"></mat-icon>Form</button>
-      <button (click)="users()" mat-button [ngClass]="{'tool-button-selected': selectedTool=='users', 'tool-button': selectedTool != 'users'}"><mat-icon style="width: 30%;" svgIcon="users"></mat-icon>Users</button>
-      <button (click)="quit()" mat-button class="tool-button"><mat-icon style="width: 30%;" svgIcon="quit"></mat-icon>Quit</button>
+      <div matRipple (click)="selectTool('drones')" [ngClass]="{'tool-button-selected': selectedTool=='drones', 'tool-button': selectedTool != 'drones'}"><mat-icon class="toolbutton-item" svgIcon="drone"></mat-icon><span class="toolbutton-item">Drones</span></div>
+      <div matRipple (click)="selectTool('brands')" [ngClass]="{'tool-button-selected': selectedTool=='brands', 'tool-button': selectedTool != 'brands'}"><mat-icon class="toolbutton-item" svgIcon="brand"></mat-icon><span class="toolbutton-item">Brands</span></div>
+      <div matRipple (click)="formTEMP()" [ngClass]="{'tool-button-selected': selectedTool=='formTEMP', 'tool-button': selectedTool != 'formTEMP'}"><mat-icon class="toolbutton-item" svgIcon="drone"></mat-icon><span class="toolbutton-item">Form TEMP</span></div>
+      <div matRipple (click)="users()" [ngClass]="{'tool-button-selected': selectedTool=='users', 'tool-button': selectedTool != 'users'}"><mat-icon class="toolbutton-item" svgIcon="users"></mat-icon><span class="toolbutton-item">Users</span></div>
+      <div matRipple (click)="quit()" class="tool-button"><mat-icon class="toolbutton-item" svgIcon="quit"></mat-icon><span class="toolbutton-item">Quit</span></div>
       </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div style="order: 1; height: 20px"></div>
-    <router-outlet></router-outlet>
+    <router-outlet style="margin-top: 20px"></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

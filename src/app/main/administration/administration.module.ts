@@ -1,13 +1,14 @@
+import { BrandsAdminComponent } from './brands-admin/brands-admin.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatCardModule, MatButtonModule, 
-  MatIconModule, MatListModule, MatInputModule, MatDatepickerModule, 
-  MatOptionModule, MatSelectModule, MatDialogModule, MatCheckboxModule, 
-  MatStepperModule, MatSidenavModule, MatButtonToggleModule, MatSlideToggleModule  } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatButtonModule,
+  MatIconModule, MatListModule, MatInputModule, MatDatepickerModule,
+  MatOptionModule, MatSelectModule, MatDialogModule, MatCheckboxModule,
+  MatStepperModule, MatSidenavModule, MatButtonToggleModule, MatSlideToggleModule, MatRippleModule  } from '@angular/material';
 
 import { SharedModule } from './../../shared/shared.module';
 
@@ -19,7 +20,6 @@ import { CategoryDialogFormComponent } from './basic-dialog-forms/category-dialo
 import { BrandDialogFormComponent } from './basic-dialog-forms/brand-dialog-form/brand-dialog-form.component';
 import { ValuableAttributeDialogFormComponent } from './basic-dialog-forms/valuable-attribute-dialog-form/valuable-attribute-dialog-form.component';
 import { UserFormComponent } from './user-form/user-form.component';
-import { BrandListComponent } from './brand-list/brand-list.component';
 import { CoreModule } from '../../core/core.module';
 
 import { MatIconRegistry } from "@angular/material";
@@ -49,6 +49,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatStepperModule,
     MatSidenavModule,
     MatButtonToggleModule,
+    MatRippleModule,
     CoreModule,
 
     SharedModule,
@@ -62,8 +63,8 @@ import { HttpClientModule } from '@angular/common/http';
     CategoryDialogFormComponent,
     ValuableAttributeDialogFormComponent,
     BrandDialogFormComponent,
-    BrandListComponent,
-    UserFormComponent
+    UserFormComponent,
+    BrandsAdminComponent
   ],
   entryComponents: [
     DroneFormComponent,
@@ -71,12 +72,13 @@ import { HttpClientModule } from '@angular/common/http';
     CategoryDialogFormComponent,
     ValuableAttributeDialogFormComponent],
   exports: [
-    AdminHomeComponent, BrandListComponent, DroneListComponent
+    AdminHomeComponent, BrandsAdminComponent, DroneListComponent
   ]
 })
 export class AdministrationModule {
   constructor (private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
     this.iconRegistry.addSvgIcon('drone', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/drone.svg'))
+    this.iconRegistry.addSvgIcon('brand', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/brand.svg'))
     this.iconRegistry.addSvgIcon('users', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/users.svg'))
     this.iconRegistry.addSvgIcon('quit', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/signout.svg'))
   }

@@ -1,7 +1,7 @@
 <div>
-  <mat-toolbar class="fixed-header">
+  <mat-toolbar class="fixed-header" color="primary">
     <mat-toolbar-row class="toolbar-container">
-      <div class="toolbar-div"><img class="toolbar-image" src="/assets/img/logosmall.png" /></div>
+      <div class="toolbar-div"><img class="toolbar-image" src="/assets/img/logo-yellow.svg" /></div>
       <div class="toolbar-div" style="font-size: 2vw;">{{name}}</div>
       <div class="toolbar-div">
         <mat-icon class="account"></mat-icon>
@@ -9,10 +9,9 @@
           <button (click)="authService.login()" mat-button color="basic">Sign in <mat-icon style="padding: 10px">account_circle</mat-icon></button>
         </div>
         <div *ngIf="(authService.user$ | async)?.uid">
-          <div>
-            <span style="padding: 10px;"><label>{{(authService.user$ | async)?.displayName}}</label>
-              <mat-icon style="padding: 10px">account_circle</mat-icon>
-            </span>
+          <div class="profile-bar">
+            <label style="margin-top:10px">{{(authService.user$ | async)?.displayName}}</label>
+            <img mat-card-avatar [src]="(authService.user$ | async)?.photoURL" style="margin-left:20px;">
           </div>
           <button (click)="authService.logout()" style="float:right;" mat-button color="basic">Sign out</button>
           <button (click)="openAdmin()" style="float:right;" mat-button color="basic">Admin</button>
