@@ -7,42 +7,48 @@
   background-color: mat-color($primary, 500);
   color: mat-contrast($primary, 500);
   align-items: center;
-  width: 200px;
+  width: 210px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  text-align: end;
+  text-align: start;
+}
+
+.toolbutton-item {
+  transform: scale(1.25);
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .tool-button {
+  background-color: rgba(0, 0, 0, 0);
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
-  height: 50px;
-  border-left: mat-color($accent, 500);
-  border-left-width: 5px;
-  border-left-style: none;
+  height: 75px;
+  border-left: mat-color($primary, 500);
+  border-left-width: 8px;
+  border-left-style: solid;
+  transition: background-color 0.3s ease-in-out, border-left 0.3s linear;
 }
 
 .tool-button:hover {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 50px;
+  background-color: rgba(0, 0, 0, 0.075);
   border-left: mat-color($accent, 500);
-  border-left-width: 5px;
+  border-left-width: 8px;
   border-left-style: solid;
 }
 
 .tool-button-selected {
+  background-color: rgba(0, 0, 0, 0.15);
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
-  height: 50px;
-  background-color: mat-color($primary, 700);
-  color: mat-contrast($primary, 700);
+  height: 75px;
   border-left: mat-color($accent, 500);
-  border-left-width: 5px;
+  border-left-width: 8px;
   border-left-style: solid;
 }
 
@@ -58,5 +64,7 @@ mat-sidenav-content {
   background-color: mat-color($mat-grey, 100);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-content: flex-start;
+  align-items: center;
+  justify-items: center;
 }

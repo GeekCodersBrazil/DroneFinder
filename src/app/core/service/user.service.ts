@@ -39,7 +39,7 @@ export class UserService {
   }
 
   public updateUser(isAdmin: boolean, idUser: string) : void{
-    
+
     this.collectionUser.doc(idUser).set({
       isAdmin: isAdmin
     }, {merge: true});
@@ -63,8 +63,8 @@ export class UserService {
           this.collectionUser.add({...newUser});
         }
     });
-   // this.subscription.unsubscribe()
+    this.subscription.unsubscribe()
   }
 
-  
+
 }

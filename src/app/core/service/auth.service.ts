@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { UserService } from './user.service';
+import { User } from '../model/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,6 @@ export class AuthService {
     .then(result => {
       this.router.navigate(['/home']);
       this.userService.addUser(result.user.displayName, result.user.email, result.user.photoURL);
-
     })
     .catch (error => console.log('auth error: ' , error))
   }
