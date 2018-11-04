@@ -31,10 +31,13 @@ export class UserService {
   {
 
     this.collectionUser = 
-     this.firestore.collection<User>
-     (this.path, ref => ref.orderBy('name')
-     .startAt(userName.toUpperCase())
-     .endAt(userName.toLowerCase()+'\uf8ff'));
+    this.firestore.collection<User>(
+      this.path, ref => 
+      ref
+      .orderBy('name')
+      .startAt(userName)
+      .endAt(userName + "\uf8ff")
+      );
 
     this.observableUser = this.collectionUser
     .snapshotChanges()
