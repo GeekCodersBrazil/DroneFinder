@@ -24,21 +24,32 @@ export class UserService {
     .subscribe(snap =>{
     });*/
 
-    this.fetchData();
+    this.fetchData("");
   }
 
-  public fetchData() {
-    this.collectionUser = this.firestore.collection<User>(this.path);
-    this.observableUser = this.collectionUser.snapshotChanges().pipe(
+  public fetchData(userName: string) 
+  {
+
+    this.collectionUser = 
+     this.firestore.collection<User>
+     (this.path, ref => ref.orderBy('name')
+     .startAt(userName.toUpperCase())
+     .endAt(userName.toLowerCase()+'\uf8ff'));
+
+    this.observableUser = this.collectionUser
+    .snapshotChanges()
+    .pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as User;
         const id = a.payload.doc.id;
         return { id, ...data };
       }))
     );
+
   }
 
-  public updateUser(isAdmin: boolean, idUser: string) : void{
+  public updateUser(isAdmin: boolean, idUser: string) : void
+  {
     
     this.collectionUser.doc(idUser).set({
       isAdmin: isAdmin

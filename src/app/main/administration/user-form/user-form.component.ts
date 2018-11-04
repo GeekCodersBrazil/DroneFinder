@@ -18,10 +18,16 @@ export class UserFormComponent implements OnInit {
                private userService: UserService) { }
 
   ngOnInit() {
-    this.userService.fetchData();
+    this.userService.fetchData("");
+  }
+  
+  public Search (userName: string)
+  {
+    //alert(userName);
+    this.userService.fetchData(userName);
   }
 
-  GetUsers(){
+  public GetUsers() {
 
     return this.userService.observableUser;
   }

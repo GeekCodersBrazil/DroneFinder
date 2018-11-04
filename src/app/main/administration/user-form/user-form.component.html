@@ -3,7 +3,15 @@
 </div> -->
 <mat-card>
     <mat-card-title color="primary">Users</mat-card-title>
-<div class="container">
+
+    <div>
+        <mat-form-field width="100%">
+            <input matInput placeholder="Search..." (keyup)="Search($event.target.value)" >
+        </mat-form-field>
+      </div>
+<br/>
+    <div class="container">
+         
 <div fxLayout="row" fxFlex="25%" style="padding-top:10px" *ngFor="let user of GetUsers() | async">
     <mat-card class="example-card" >
        <mat-card-header >
