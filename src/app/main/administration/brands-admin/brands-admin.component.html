@@ -1,3 +1,46 @@
-<p>
-  brands-admin works!
-</p>
+<div class="form">
+  <div class="form-top">
+    <div class="form-header">
+      <div class="form-title">
+        <mat-icon class="form-icon" svgIcon="brand"></mat-icon>
+        <h1 style="margin-left: 10%">Brands</h1>
+      </div>
+
+      <h4>You have <strong>{{service.totalItems}}</strong> brands registered</h4>
+    </div>
+    <div style="align-self:center">
+      <button (click)="addBrand()" mat-raised-button color="primary">New Brand</button>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div>
+
+  </div>
+  <div class="form-card-list">
+    <mat-card *ngFor="let brand of service.observableList | async">
+      <mat-card-header>
+        <mat-card-title>{{brand.name}}</mat-card-title>
+        <mat-card-subtitle>{{brand.brandURL}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="card-brand-image"><img [src]="brand.brandImageURL" style="width: 100%;" /></div>
+      </mat-card-content>
+
+      <div class="menu-container">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </div>
+    </mat-card>
+  </div>
+</div>

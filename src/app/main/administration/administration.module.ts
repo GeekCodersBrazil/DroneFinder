@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatCardModule, MatButtonModule,
   MatIconModule, MatListModule, MatInputModule, MatDatepickerModule,
   MatOptionModule, MatSelectModule, MatDialogModule, MatCheckboxModule,
-  MatStepperModule, MatSidenavModule, MatButtonToggleModule, MatSlideToggleModule, MatRippleModule  } from '@angular/material';
+  MatStepperModule, MatSidenavModule, MatButtonToggleModule, MatSlideToggleModule, MatRippleModule, MatMenuModule  } from '@angular/material';
 
 import { SharedModule } from './../../shared/shared.module';
 
@@ -50,6 +50,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSidenavModule,
     MatButtonToggleModule,
     MatRippleModule,
+    MatMenuModule,
     CoreModule,
 
     SharedModule,
