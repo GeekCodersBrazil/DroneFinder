@@ -30,22 +30,11 @@ export class UserService {
   public fetchData(userName: string)
   {
 
-<<<<<<< HEAD
-    this.collectionUser = 
-    this.firestore.collection<User>(
-      this.path, ref => 
-      ref
-      .orderBy('name')
-      .startAt(userName)
-      .endAt(userName + "\uf8ff")
-      );
-=======
     this.collectionUser =
      this.firestore.collection<User>
      (this.path, ref => ref.orderBy('name')
      .startAt(userName.toUpperCase())
      .endAt(userName.toLowerCase()+'\uf8ff'));
->>>>>>> def7c11ee0ba873ea5ba8487e1d1cf0888d2597f
 
     this.observableUser = this.collectionUser
     .snapshotChanges()
