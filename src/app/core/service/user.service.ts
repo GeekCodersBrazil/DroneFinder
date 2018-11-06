@@ -70,10 +70,12 @@ export class UserService {
           newUser.photoURL= photoURL;
 
           this.collectionUser.add({...newUser});
-          this.subscription.unsubscribe();
         }
     });
   }
 
+  public unsubscribe() {
+    this.subscription.unsubscribe();
+  }
 
 }
