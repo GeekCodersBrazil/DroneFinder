@@ -58,23 +58,21 @@ export class UserService {
   }
 
   public addUser(name: string, email: string, photoURL: string) : void {
-
     this.subscription = this.firestore.collection<User>(this.path, ref => ref.where('email', '==', email))
     .snapshotChanges()
     .subscribe(snap =>{
         if (snap.length == 0)
         {
-          var newUser = new User();
-
+          var newUser: User = new User;
           newUser.name = name;
           newUser.email = email;
           newUser.isAdmin = false;
           newUser.photoURL= photoURL;
 
           this.collectionUser.add({...newUser});
+          this.subscription.unsubscribe();
         }
     });
-    this.subscription.unsubscribe()
   }
 
 

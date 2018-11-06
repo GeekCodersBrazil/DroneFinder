@@ -5,7 +5,7 @@
 
 .form {
   margin: auto;
-  width: 80%;
+  width: 98%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -37,12 +37,14 @@
   color: mat-color($primary, 500);
   transform: scale(2);
   margin-bottom: 20px;
+  margin-left: 10px;
 }
 
 .card-brand-image {
   display: flex;
   width: 80px;
   height: 80px;
+  padding-right: 5px;
 }
 
 .form-card-list {
@@ -50,26 +52,31 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 mat-card {
-  margin: 10px;
-  width: 25%;
+  max-width: 600px;
   min-width: 300px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+mat-card:hover > .menu-container{
+  color: gray;
 }
 
 .menu-container {
+  position: absolute;
+  top: 5px;
+  right: 10px;
   width: 20px;
   color: white;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   transition: color 0.2s;
-}
-
-.menu-container:hover {
-  color: gray;
 }
