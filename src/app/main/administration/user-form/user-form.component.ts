@@ -7,7 +7,7 @@ import { MatSlideToggleChange } from '@angular/material';
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.scss']
+  styleUrls: ['./user-form.component.scss','../../../app.component.scss']
 })
 export class UserFormComponent implements OnInit {
 
@@ -15,7 +15,7 @@ export class UserFormComponent implements OnInit {
   formUser: FormGroup;
 
   constructor( private FormBuilder: FormBuilder,
-               private userService: UserService) { }
+               public userService: UserService) { }
 
   ngOnInit() {
     this.userService.fetchData("");
