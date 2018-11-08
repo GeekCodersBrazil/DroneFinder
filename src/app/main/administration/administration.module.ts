@@ -83,5 +83,6 @@ export class AdministrationModule {
     this.iconRegistry.addSvgIcon('brand', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/brand.svg'))
     this.iconRegistry.addSvgIcon('users', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/users.svg'))
     this.iconRegistry.addSvgIcon('quit', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/signout.svg'))
+    this.iconRegistry.addSvgIcon('search', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/search.svg'))
   }
 }

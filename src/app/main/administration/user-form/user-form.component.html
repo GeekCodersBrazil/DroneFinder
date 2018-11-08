@@ -1,16 +1,24 @@
-<!-- <div>
-  <input type="text" width="100%">
-</div> -->
-<mat-card>
-    <mat-card-title color="primary">Users</mat-card-title>
-
-    <div>
-        <mat-form-field width="100%">
-            <input matInput placeholder="Search..." (keyup)="Search($event.target.value)" >
-        </mat-form-field>
+<div class="form">
+  <div class="form-top">
+    <div class="form-header">
+      <div class="form-title">
+        <mat-icon class="form-icon" svgIcon="users"></mat-icon>
+        <h1 style="margin-left: 10%">Users</h1>
       </div>
-<br/>
-    <div class="container">
+
+      <h4>You have <strong>{{userService.totalRecords}}</strong> users registered</h4>
+    </div>
+   
+  </div>
+  <mat-divider></mat-divider>
+  <div class="box-search">
+    
+    <mat-icon class="form-icon" svgIcon="search" style="margin-top: 10px"></mat-icon>
+            <input class="input-search" (keyup)="Search($event.target.value)" >
+      
+           
+</div>
+<div class="form-card-list">
          
 <div fxLayout="row" fxFlex="25%" style="padding-top:10px" *ngFor="let user of GetUsers() | async">
     <mat-card class="example-card" >
@@ -31,4 +39,3 @@
 </div>
 
 </div>
-</mat-card>

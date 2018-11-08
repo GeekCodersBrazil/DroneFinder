@@ -16,6 +16,7 @@ export class UserService {
   observableUser: Observable<any>;
   subscription: any;
   defaultToggleOption: boolean = false;
+  public totalRecords: number = 0;
 
   constructor(private firestore: AngularFirestore) {
 
@@ -29,12 +30,13 @@ export class UserService {
 
   public fetchData(userName: string)
   {
+    this.totalRecords = 0;
 
     this.collectionUser =
      this.firestore.collection<User>
      (this.path, ref => ref.orderBy('name')
-     .startAt(userName.toUpperCase())
-     .endAt(userName.toLowerCase()+'\uf8ff'));
+     .startAt(userName)
+     .endAt(userName +'\uf8ff'));
 
     this.observableUser = this.collectionUser
     .snapshotChanges()
@@ -42,6 +44,7 @@ export class UserService {
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as User;
         const id = a.payload.doc.id;
+        this.totalRecords ++;
         return { id, ...data };
       }))
     );
