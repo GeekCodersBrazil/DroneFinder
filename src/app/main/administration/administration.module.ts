@@ -23,7 +23,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { CoreModule } from '../../core/core.module';
 
 import { MatIconRegistry } from "@angular/material";
-import { DomSanitizer } from "@angular/platform-browser";
+import { DomSanitizer, BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -33,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
+    BrowserModule,
 
     BrowserAnimationsModule,
     MatToolbarModule,

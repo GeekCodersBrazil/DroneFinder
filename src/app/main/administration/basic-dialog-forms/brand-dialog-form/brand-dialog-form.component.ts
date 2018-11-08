@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { Brand } from '../../../../core/model/brand.model';
 import { BrandService } from '../../../../core/service/brand.service';
@@ -13,7 +13,9 @@ export class BrandDialogFormComponent implements OnInit {
 
   brand: Brand = new Brand()
 
-  constructor(private brandService: BrandService, public dialogRef: MatDialogRef<BrandDialogFormComponent>) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Brand, private brandService: BrandService, public dialogRef: MatDialogRef<BrandDialogFormComponent>) {
+    if (data != undefined)
+      this.brand = data
   }
 
   ngOnInit() {
@@ -21,7 +23,10 @@ export class BrandDialogFormComponent implements OnInit {
   }
 
   onOkClick() {
-    this.brandService.insertBrand(this.brand)
+    if (this.brand.$id != undefined)
+      this.brandService.updateBrand(this.brand)
+    else
+      this.brandService.insertBrand(this.brand)
     this.dialogRef.close();
   }
 

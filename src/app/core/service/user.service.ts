@@ -75,7 +75,8 @@ export class UserService {
   }
 
   public unsubscribe() {
-    this.subscription.unsubscribe();
+    if (this.subscription != undefined)
+      this.subscription.unsubscribe();
   }
 
 }

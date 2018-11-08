@@ -21,15 +21,15 @@ export class BrandService {
   }
 
   fetchObservable() {
-    this.totalItems = 0;
     this.collection = this.firestore.collection<Brand>(this.path)
     this.observableList = this.collection.snapshotChanges().pipe(
-      map(items => items.map(item => {
+      map(items => {
+        this.totalItems = items.length
+        return items.map(item => {
         const data = item.payload.doc.data() as Brand
-        const id = item.payload.doc.id
-        this.totalItems ++
-        return { id, ...data }
-      }))
+        const $id = item.payload.doc.id
+        return { $id, ...data }
+      })})
     )
   }
 

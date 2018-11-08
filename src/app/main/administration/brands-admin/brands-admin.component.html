@@ -1,4 +1,4 @@
-<div class="form">
+<div [@formScreen]="formState" class="form">
   <div class="form-top">
     <div class="form-header">
       <div class="form-title">
@@ -16,14 +16,14 @@
   <div>
 
   </div>
-  <div class="form-card-list">
-    <mat-card *ngFor="let brand of service.observableList | async">
+  <div class="form-card-list" [@itemAnimation]="service.totalItems">
+    <mat-card *ngFor="let brand of service.observableList | async" class="card">
       <mat-card-header>
         <mat-card-title>{{brand.name}}</mat-card-title>
         <mat-card-subtitle>{{brand.brandURL}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <div class="card-brand-image"><img [src]="brand.brandImageURL" style="width: 100%;" /></div>
+        <div class="card-brand-image"><img [src]="brand.brandImageURL" style="width: 100%; object-fit: contain" /></div>
       </mat-card-content>
 
       <div class="menu-container">
@@ -31,11 +31,11 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>
+          <button (click)="editBrand(brand)" mat-menu-item>
             <mat-icon>edit</mat-icon>
             <span>Edit</span>
           </button>
-          <button mat-menu-item>
+          <button (click)="deleteBrand(brand.$id)" mat-menu-item>
             <mat-icon>delete</mat-icon>
             <span>Delete</span>
           </button>
