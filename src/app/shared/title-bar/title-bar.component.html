@@ -14,7 +14,9 @@
             <img mat-card-avatar [src]="(authService.user$ | async)?.photoURL" style="margin-left:20px;">
           </div>
           <button (click)="authService.logout()" style="float:right;" mat-button color="basic">Sign out</button>
-          <button (click)="openAdmin()" style="float:right;" mat-button color="basic">Admin</button>
+          
+          <button *ngIf="security.getUserProfile().isAdmin" (click)="openAdmin()" style="float:right;" mat-button color="basic">Admin</button>
+        {{security.getUserProfile().isAdmin}}crc4rfc4rfc4rc4rc
         </div>
       </div>
     </mat-toolbar-row>

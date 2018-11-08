@@ -12,7 +12,10 @@ import { User } from '../model/user.model';
 export class AuthService {
   user$: Observable<firebase.User>
 
-  constructor( private router: Router, private fbAuth: AngularFireAuth, private userService: UserService ) {
+  constructor( 
+    private router: Router, 
+    private fbAuth: AngularFireAuth, 
+    private userService: UserService ) {
     this.user$ = this.fbAuth.authState;
   }
 
@@ -20,15 +23,20 @@ export class AuthService {
 
     this.fbAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then(result => {
-      this.router.navigate(['/home']);
       this.userService.addUser(result.user.displayName, result.user.email, result.user.photoURL);
+
+     
+    })
+    .then(r=>{
+      this.router.navigate(['/home']);
     })
     .catch (error => console.log('auth error: ' , error))
   }
 
   logout() {
-    this.userService.unsubscribe();
+    //this.userService.unsubscribe();
     this.fbAuth.auth.signOut();
+    localStorage.setItem("userCredentials","");
     this.router.navigate(['/home']);
   }
 }

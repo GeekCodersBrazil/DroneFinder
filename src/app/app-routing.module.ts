@@ -17,10 +17,10 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminHomeComponent, canActivate: [ AdminGuard ],
     children: [
-      { path: 'drones', component: DroneListComponent },
-      { path: 'brands', component: BrandsAdminComponent },
-      { path: 'users', component: UserFormComponent },
-      { path: 'formTEMP', component: DroneFormComponent }
+      { path: 'drones', component: DroneListComponent, canActivate: [ AdminGuard ] },
+      { path: 'brands', component: BrandsAdminComponent, canActivate: [ AdminGuard ] },
+      { path: 'users', component: UserFormComponent, canActivate: [ AdminGuard ] },
+      { path: 'formTEMP', component: DroneFormComponent, canActivate: [ AdminGuard ] }
     ] },
 ]
 

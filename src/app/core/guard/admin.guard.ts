@@ -4,6 +4,7 @@ import { Observable, } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { AuthService } from './../../core/service/auth.service';
+import { isNullOrUndefined } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +18,15 @@ export class AdminGuard implements CanActivate {
 
   canActivate(): Observable<boolean> {
     return this.authService.user$.pipe(map(user => {
-      if (user && user.uid) {
-        return true
-      } else {
-        this.router.navigate(['/home'])
-        return false
+
+      var userCredentials = JSON.parse(localStorage.getItem("userCredentials"));
+      if (!isNullOrUndefined(userCredentials))
+      {
+        return userCredentials.isAdmin;
       }
+      this.router.navigate(['/home']);
+      
     }))
   }
+
 }
