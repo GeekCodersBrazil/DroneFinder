@@ -1,0 +1,42 @@
+<div [@formScreen]="formState" class="form">
+  <div class="form-top">
+    <div class="form-header">
+      <div class="form-title">
+        <mat-icon class="form-icon" [svgIcon]="attribute"></mat-icon>
+        <h1 style="margin-left: 10%">{{formName[attribute]}}</h1>
+      </div>
+
+      <h4>You have <strong>{{service.totalItems[attribute]}}</strong> {{pluralName[attribute]}} registered</h4>
+    </div>
+    <div style="align-self:center">
+      <button (click)="addItem()" mat-raised-button color="primary">New {{formName[attribute]}}</button>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div>
+
+  </div>
+  <div class="form-card-list" [@itemAnimation]="service.totalItems[attribute]">
+    <mat-card *ngFor="let item of service.observableList[attribute] | async" class="card">
+      <mat-card-header>
+        <mat-card-title>{{item.value}}</mat-card-title>
+        <mat-card-subtitle>{{item.order}}</mat-card-subtitle>
+      </mat-card-header>
+      <div class="menu-container">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button (click)="editValue(item)" mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </button>
+          <button (click)="deleteValue(item)" mat-menu-item>
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </div>
+    </mat-card>
+  </div>
+</div>

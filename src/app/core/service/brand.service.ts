@@ -26,24 +26,27 @@ export class BrandService {
       map(items => {
         this.totalItems = items.length
         return items.map(item => {
-        const data = item.payload.doc.data() as Brand
-        const $id = item.payload.doc.id
-        return { $id, ...data }
-      })})
+          const data = item.payload.doc.data() as Brand
+          const $id = item.payload.doc.id
+          return { $id, ...data }
+        })
+      })
     )
   }
 
   insertBrand(brand: Brand) {
-    let brandData = {...brand}
+    let brandData = { ...brand }
     delete brandData['$id']
     this.firestore.collection(this.path).add(brandData)
   }
 
   updateBrand(brand: Brand) {
     return this.firestore.doc(`${this.path}/${brand.$id}`).update(
-      {name: brand.name,
+      {
+        name: brand.name,
         brandImageURL: brand.brandImageURL,
-        brandURL: brand.brandURL}
+        brandURL: brand.brandURL
+      }
     )
   }
 

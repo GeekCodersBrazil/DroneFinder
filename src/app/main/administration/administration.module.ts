@@ -1,3 +1,4 @@
+import { ValuableAttributeAdminComponent } from './valuable-attribute-admin/valuable-attribute-admin.component';
 import { BrandsAdminComponent } from './brands-admin/brands-admin.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -66,7 +67,8 @@ import { HttpClientModule } from '@angular/common/http';
     ValuableAttributeDialogFormComponent,
     BrandDialogFormComponent,
     UserFormComponent,
-    BrandsAdminComponent
+    BrandsAdminComponent,
+    ValuableAttributeAdminComponent
   ],
   entryComponents: [
     DroneFormComponent,
@@ -81,6 +83,11 @@ export class AdministrationModule {
   constructor (private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
     this.iconRegistry.addSvgIcon('drone', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/drone.svg'))
     this.iconRegistry.addSvgIcon('brand', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/brand.svg'))
+    this.iconRegistry.addSvgIcon('rcType', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/rc.svg'))
+    this.iconRegistry.addSvgIcon('cameraPhoto', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/photo.svg'))
+    this.iconRegistry.addSvgIcon('cameraVideo', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/video.svg'))
+    this.iconRegistry.addSvgIcon('gimbal', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/gimbal.svg'))
+    this.iconRegistry.addSvgIcon('battery', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/battery.svg'))
     this.iconRegistry.addSvgIcon('users', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/users.svg'))
     this.iconRegistry.addSvgIcon('quit', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/signout.svg'))
     this.iconRegistry.addSvgIcon('search', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/search.svg'))

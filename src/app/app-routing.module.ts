@@ -11,6 +11,7 @@ import { DroneListComponent } from './main/administration/drone-list/drone-list.
 import { UserFormComponent } from './main/administration/user-form/user-form.component';
 import { BrandsAdminComponent } from './main/administration/brands-admin/brands-admin.component';
 import { DroneFormComponent } from './main/administration/drone-form/drone-form.component';
+import { ValuableAttributeAdminComponent } from './main/administration/valuable-attribute-admin/valuable-attribute-admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,6 +20,11 @@ const routes: Routes = [
     children: [
       { path: 'drones', component: DroneListComponent },
       { path: 'brands', component: BrandsAdminComponent },
+      { path: 'rcType', component: ValuableAttributeAdminComponent},
+      { path: 'cameraPhoto', component: ValuableAttributeAdminComponent},
+      { path: 'cameraVideo', component: ValuableAttributeAdminComponent},
+      { path: 'gimbal', component: ValuableAttributeAdminComponent},
+      { path: 'battery', component: ValuableAttributeAdminComponent},
       { path: 'users', component: UserFormComponent },
       { path: 'formTEMP', component: DroneFormComponent }
     ] },

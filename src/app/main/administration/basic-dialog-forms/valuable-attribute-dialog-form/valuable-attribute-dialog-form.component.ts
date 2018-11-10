@@ -16,7 +16,9 @@ export class ValuableAttributeDialogFormComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<ValuableAttributeDialogFormComponent>, public service: ValuableAttributeService) {
     this.path = data.path
-    console.log(this.service)
+    if (data.value != undefined) {
+      this.value = data.value
+    }
   }
 
   ngOnInit() {
@@ -24,7 +26,10 @@ export class ValuableAttributeDialogFormComponent implements OnInit {
   }
 
   onOkClick() {
-    this.service.insertValue(this.path, this.value)
+    if (this.value['$id'] != undefined)
+      this.service.updateValue(this.path, this.value)
+    else
+      this.service.insertValue(this.path, this.value)
     this.dialogRef.close();
   }
 
