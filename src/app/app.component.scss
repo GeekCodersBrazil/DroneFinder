@@ -90,7 +90,7 @@ mat-card:hover > .menu-container{
   outline: none;
   border-style: none;
   background-color: transparent;
-  text-decoration-color: blue;
+  text-decoration-color: mat-color($primary);
   font-size: large;
   margin-left: 20px
 }

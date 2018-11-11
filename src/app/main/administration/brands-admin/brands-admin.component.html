@@ -13,11 +13,14 @@
     </div>
   </div>
   <mat-divider></mat-divider>
-  <div>
 
+  <div class="box-search">
+    <mat-icon class="form-icon" svgIcon="search" style="margin-top: 10px"></mat-icon>
+    <input class="input-search" (keyup)="Search($event.target.value)">
   </div>
+
   <div class="form-card-list" [@itemAnimation]="service.totalItems">
-    <mat-card *ngFor="let brand of service.observableList | async" class="card">
+    <mat-card *ngFor="let brand of service.observableList | async">
       <mat-card-header>
         <mat-card-title>{{brand.name}}</mat-card-title>
         <mat-card-subtitle>{{brand.brandURL}}</mat-card-subtitle>

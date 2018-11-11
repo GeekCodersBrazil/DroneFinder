@@ -6,15 +6,15 @@
         <mat-divider></mat-divider>
         <h3>Administration</h3>
       </div>
-      <div matRipple (click)="selectTool('drones')" [ngClass]="{'tool-button-selected': selectedTool=='drones', 'tool-button': selectedTool != 'drones'}"><mat-icon class="toolbutton-item" svgIcon="drone"></mat-icon><span class="toolbutton-item">Drones</span></div>
-      <div matRipple (click)="selectTool('brands')" [ngClass]="{'tool-button-selected': selectedTool=='brands', 'tool-button': selectedTool != 'brands'}"><mat-icon class="toolbutton-item" svgIcon="brand"></mat-icon><span class="toolbutton-item">Brands</span></div>
-      <div matRipple (click)="selectTool('rcType')" [ngClass]="{'tool-button-selected': selectedTool=='rcType', 'tool-button': selectedTool != 'rcType'}"><mat-icon class="toolbutton-item" svgIcon="rcType"></mat-icon><span class="toolbutton-item">RC</span></div>
-      <div matRipple (click)="selectTool('cameraPhoto')" [ngClass]="{'tool-button-selected': selectedTool=='cameraPhoto', 'tool-button': selectedTool != 'cameraPhoto'}"><mat-icon class="toolbutton-item" svgIcon="cameraPhoto"></mat-icon><span class="toolbutton-item">C. Photo</span></div>
-      <div matRipple (click)="selectTool('cameraVideo')" [ngClass]="{'tool-button-selected': selectedTool=='cameraVideo', 'tool-button': selectedTool != 'cameraVideo'}"><mat-icon class="toolbutton-item" svgIcon="cameraVideo"></mat-icon><span class="toolbutton-item">C. Video</span></div>
-      <div matRipple (click)="selectTool('gimbal')" [ngClass]="{'tool-button-selected': selectedTool=='gimbal', 'tool-button': selectedTool != 'gimbal'}"><mat-icon class="toolbutton-item" svgIcon="gimbal"></mat-icon><span class="toolbutton-item">Gimbal</span></div>
-      <div matRipple (click)="selectTool('battery')" [ngClass]="{'tool-button-selected': selectedTool=='battery', 'tool-button': selectedTool != 'battery'}"><mat-icon class="toolbutton-item" svgIcon="battery"></mat-icon><span class="toolbutton-item">Battery</span></div>
-      <div matRipple (click)="users()" [ngClass]="{'tool-button-selected': selectedTool=='users', 'tool-button': selectedTool != 'users'}"><mat-icon class="toolbutton-item" svgIcon="users"></mat-icon><span class="toolbutton-item">Users</span></div>
-      <div matRipple (click)="quit()" class="tool-button"><mat-icon class="toolbutton-item" svgIcon="quit"></mat-icon><span class="toolbutton-item">Quit</span></div>
+      <div matRipple (click)="selectTool('drones')" [ngClass]="{'tool-button-selected': selectedTool=='drones', 'tool-button': selectedTool != 'drones'}"><mat-icon class="toolbutton-icon" svgIcon="drone"></mat-icon><span class="toolbutton-text">Drones</span></div>
+      <div matRipple (click)="selectTool('brands')" [ngClass]="{'tool-button-selected': selectedTool=='brands', 'tool-button': selectedTool != 'brands'}"><mat-icon class="toolbutton-icon" svgIcon="brand"></mat-icon><span class="toolbutton-text">Brands</span></div>
+      <div matRipple (click)="selectTool('rcType')" [ngClass]="{'tool-button-selected': selectedTool=='rcType', 'tool-button': selectedTool != 'rcType'}"><mat-icon class="toolbutton-icon" svgIcon="rcType"></mat-icon><span class="toolbutton-text">RC</span></div>
+      <div matRipple (click)="selectTool('cameraPhoto')" [ngClass]="{'tool-button-selected': selectedTool=='cameraPhoto', 'tool-button': selectedTool != 'cameraPhoto'}"><mat-icon class="toolbutton-icon" svgIcon="cameraPhoto"></mat-icon><span class="toolbutton-text">Camera Photo</span></div>
+      <div matRipple (click)="selectTool('cameraVideo')" [ngClass]="{'tool-button-selected': selectedTool=='cameraVideo', 'tool-button': selectedTool != 'cameraVideo'}"><mat-icon class="toolbutton-icon" svgIcon="cameraVideo"></mat-icon><span class="toolbutton-text">Camera Video</span></div>
+      <div matRipple (click)="selectTool('gimbal')" [ngClass]="{'tool-button-selected': selectedTool=='gimbal', 'tool-button': selectedTool != 'gimbal'}"><mat-icon class="toolbutton-icon" svgIcon="gimbal"></mat-icon><span class="toolbutton-text">Gimbal</span></div>
+      <div matRipple (click)="selectTool('battery')" [ngClass]="{'tool-button-selected': selectedTool=='battery', 'tool-button': selectedTool != 'battery'}"><mat-icon class="toolbutton-icon" svgIcon="battery"></mat-icon><span class="toolbutton-text">Battery</span></div>
+      <div matRipple (click)="users()" [ngClass]="{'tool-button-selected': selectedTool=='users', 'tool-button': selectedTool != 'users'}"><mat-icon class="toolbutton-icon" svgIcon="users"></mat-icon><span class="toolbutton-text">Users</span></div>
+      <div matRipple (click)="quit()" class="tool-button"><mat-icon class="toolbutton-icon" svgIcon="quit"></mat-icon><span class="toolbutton-text">Quit</span></div>
       </div>
   </mat-sidenav>
   <mat-sidenav-content>

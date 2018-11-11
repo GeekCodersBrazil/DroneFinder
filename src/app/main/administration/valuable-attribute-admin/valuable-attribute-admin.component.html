@@ -17,7 +17,7 @@
 
   </div>
   <div class="form-card-list" [@itemAnimation]="service.totalItems[attribute]">
-    <mat-card *ngFor="let item of service.observableList[attribute] | async" class="card">
+    <mat-card *ngFor="let item of service.observableList[attribute] | async">
       <mat-card-header>
         <mat-card-title>{{item.value}}</mat-card-title>
         <mat-card-subtitle>{{item.order}}</mat-card-subtitle>

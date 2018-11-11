@@ -9,7 +9,7 @@ import { screenAnimation, itemAnimation } from 'src/app/shared/animations/form-a
 @Component({
   selector: 'app-brands-admin',
   templateUrl: './brands-admin.component.html',
-  styleUrls: ['./brands-admin.component.scss'],
+  styleUrls: ['../../../app.component.scss'],
   animations: [
     screenAnimation,
     itemAnimation

@@ -9,7 +9,7 @@ import { ValuableAttributeDialogFormComponent } from '../basic-dialog-forms/valu
 @Component({
   selector: 'app-valuable-attribute-admin',
   templateUrl: './valuable-attribute-admin.component.html',
-  styleUrls: ['./valuable-attribute-admin.component.scss'],
+  styleUrls: ['../../../app.component.scss'],
   animations: [
     screenAnimation,
     itemAnimation
