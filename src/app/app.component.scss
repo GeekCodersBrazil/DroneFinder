@@ -82,6 +82,9 @@ mat-card:hover > .menu-container{
 }
 
 .box-search {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   background-color: gainsboro;
   height: 50px;
 }
@@ -92,5 +95,6 @@ mat-card:hover > .menu-container{
   background-color: transparent;
   text-decoration-color: mat-color($primary);
   font-size: large;
-  margin-left: 20px
+  margin-left: 20px;
+  width: 100%;
 }
