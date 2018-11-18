@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes, Router } from '@angular/router'
@@ -7,7 +6,7 @@ import { HomeComponent } from './main/home/home.component';
 import { AdminHomeComponent } from './main/administration/admin-home/admin-home.component';
 
 import { AdminGuard } from './core/guard/admin.guard';
-import { DroneListComponent } from './main/administration/drone-list/drone-list.component';
+import { DroneAdminComponent } from './main/administration/drone-admin/drone-admin.component';
 import { UserFormComponent } from './main/administration/user-form/user-form.component';
 import { BrandsAdminComponent } from './main/administration/brands-admin/brands-admin.component';
 import { DroneFormComponent } from './main/administration/drone-form/drone-form.component';
@@ -18,7 +17,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminHomeComponent, canActivate: [ AdminGuard ],
     children: [
-      { path: 'drones', component: DroneListComponent },
+      { path: 'drones', component: DroneAdminComponent },
       { path: 'brands', component: BrandsAdminComponent },
       { path: 'rcType', component: ValuableAttributeAdminComponent},
       { path: 'cameraPhoto', component: ValuableAttributeAdminComponent},

@@ -1,6 +1,6 @@
-<mat-card class="form-container">
-  <mat-card-title color="primary">Drone Form</mat-card-title>
+<h1 mat-dialog-title>Drone Form</h1>
 
+<div class="form-container">
   <form [formGroup]="formDrone">
     <mat-vertical-stepper linear="false">
 
@@ -14,7 +14,7 @@
             <mat-form-field>
               <mat-select formControlName="brand" placeholder="Brand">
                 <mat-option>None</mat-option>
-                <mat-option *ngFor="let brand of brandService.observableList | async" [value]="brand">{{brand.name}}</mat-option>
+                <mat-option *ngFor="let brand of brandService.unfilteredList()" [value]="brand">{{brand.name}}</mat-option>
               </mat-select>
             </mat-form-field>
             <button mat-button (click)="onAddBrand()">New Brand</button>
@@ -24,7 +24,7 @@
             <mat-form-field>
               <mat-select formControlName="category" placeholder="Category">
                 <mat-option>None</mat-option>
-                <mat-option *ngFor="let category of categoryService.observableList | async" [value]="category">{{category}}</mat-option>
+                <mat-option *ngFor="let category of categoryService.unfilteredList()" [value]="category">{{category}}</mat-option>
               </mat-select>
             </mat-form-field>
             <button mat-button (click)="onAddCategory()">New Category</button>
@@ -111,8 +111,7 @@
           <div class="form-field">
             <mat-form-field>
               <mat-select formControlName="rcType" placeholder="RC Type">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let rcType of valuableAttributeService.observableList['rcType'] | async" [value]="rcType">{{rcType.value}}</mat-option>
+                <mat-option *ngFor="let rcType of valuableAttributeService.unfilteredList('rcType')" [value]="rcType">{{rcType.value}}</mat-option>
               </mat-select>
             </mat-form-field>
             <button mat-button (click)="onAddValuableAttribute('rcType')">New RC Type</button>
@@ -121,8 +120,7 @@
           <div class="form-field">
             <mat-form-field>
               <mat-select formControlName="cameraPhoto" placeholder="Camera photo">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let cameraPhoto of valuableAttributeService.observableList['cameraPhoto'] | async" [value]="cameraPhoto">{{cameraPhoto.value}}</mat-option>
+                <mat-option *ngFor="let cameraPhoto of valuableAttributeService.unfilteredList('cameraPhoto')" [value]="cameraPhoto">{{cameraPhoto.value}}</mat-option>
               </mat-select>
             </mat-form-field>
             <button mat-button (click)="onAddValuableAttribute('cameraPhoto')">New C. Photo</button>
@@ -131,8 +129,7 @@
           <div class="form-field">
             <mat-form-field>
               <mat-select formControlName="cameraVideo" placeholder="Camera video">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let cameraVideo of valuableAttributeService.observableList['cameraVideo'] | async" [value]="cameraVideo">{{cameraVideo.value}}</mat-option>
+                <mat-option *ngFor="let cameraVideo of valuableAttributeService.unfilteredList('cameraVideo')" [value]="cameraVideo">{{cameraVideo.value}}</mat-option>
               </mat-select>
             </mat-form-field>
             <button mat-button (click)="onAddValuableAttribute('cameraVideo')">New C. Video</button>
@@ -141,8 +138,7 @@
           <div class="form-field">
             <mat-form-field>
               <mat-select formControlName="gimbal" placeholder="Gimbal">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let gimbal of valuableAttributeService.observableList['gimbal'] | async" [value]="gimbal">{{gimbal.value}}</mat-option>
+                <mat-option *ngFor="let gimbal of valuableAttributeService.unfilteredList('gimbal')" [value]="gimbal">{{gimbal.value}}</mat-option>
               </mat-select>
             </mat-form-field>
             <button mat-button (click)="onAddValuableAttribute('gimbal')">New Gimbal</button>
@@ -161,8 +157,7 @@
           <div class="form-field">
             <mat-form-field>
               <mat-select formControlName="battery" placeholder="Battery">
-                <mat-option>None</mat-option>
-                <mat-option *ngFor="let battery of valuableAttributeService.observableList['battery'] | async" [value]="battery">{{battery.value}}</mat-option>
+                <mat-option *ngFor="let battery of valuableAttributeService.unfilteredList('battery')" [value]="battery">{{battery.value}}</mat-option>
               </mat-select>
             </mat-form-field>
             <button mat-button (click)="onAddValuableAttribute('battery')">New Battery</button>
@@ -237,4 +232,4 @@
     <button mat-raised-button (click)="cancel()">cancel</button>
     <button mat-raised-button (click)="saveDrone()" [disabled]="!formDrone.valid" color="primary">Save</button>
   </div>
-</mat-card>
+</div>

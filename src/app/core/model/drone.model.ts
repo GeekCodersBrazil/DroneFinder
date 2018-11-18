@@ -6,20 +6,20 @@ import { Brand } from './brand.model';
 
 // Drone class
 export class Drone {
-  id$: string
+  $id: string
 
   model: string
-  brand: Brand //Key
+  brand: Brand
   category: string
   pictureURL: string
   productURL?: string
-  releaseDate?: Date
-  gpsPosition: boolean
-  altitudeHold: boolean
+  releaseDate?: any
+  gpsPosition: boolean = false
+  altitudeHold: boolean = false
   rcType: ValuableAttribute
   gimbal: ValuableAttribute
   cameraPhoto: ValuableAttribute
-  cameraMovie: ValuableAttribute
+  cameraVideo: ValuableAttribute
   fpvType: ValuableAttribute
   battery?: ValuableAttribute
   chargeTime?: number

@@ -2,14 +2,14 @@
   <div class="form-top">
     <div class="form-header">
       <div class="form-title">
-        <mat-icon class="form-icon" [svgIcon]="attribute"></mat-icon>
-        <h1 style="margin-left: 10%">{{formName[attribute]}}</h1>
+        <mat-icon class="form-icon" svgIcon="drone"></mat-icon>
+        <h1 style="margin-left: 10%">Drones</h1>
       </div>
 
-      <h4>You have <strong>{{service.filteredResults[attribute]}}</strong> {{pluralName[attribute]}} registered</h4>
+      <h4>You have <strong>{{service.filteredResults}}</strong> drones registered</h4>
     </div>
     <div style="align-self:center">
-      <button (click)="addItem()" mat-raised-button color="primary">New {{formName[attribute]}}</button>
+      <button (click)="addDrone()" mat-raised-button color="primary">New Drone</button>
     </div>
   </div>
   <mat-divider></mat-divider>
@@ -19,22 +19,26 @@
     <input class="input-search" [(ngModel)]="searchString">
   </div>
 
-  <div class="form-card-list" [@itemAnimation]="service.filter(attribute, 'value', searchString).length">
-    <mat-card *ngFor="let item of service.filter(attribute, 'value', searchString)">
+  <div class="form-card-list" [@itemAnimation]="service.filter('model', searchString).length">
+    <mat-card *ngFor="let drone of service.filter('model', searchString)">
       <mat-card-header>
-        <mat-card-title>{{item.value}}</mat-card-title>
-        <mat-card-subtitle>{{item.order}}</mat-card-subtitle>
+        <mat-card-title>{{drone.model}}</mat-card-title>
+        <mat-card-subtitle>{{drone.brand?.name}}</mat-card-subtitle>
       </mat-card-header>
+      <mat-card-content>
+        <div class="card-drone-image"><img [src]="drone.pictureURL" style="width: 100%; object-fit: contain" /></div>
+      </mat-card-content>
+
       <div class="menu-container">
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button (click)="editValue(item)" mat-menu-item>
+          <button (click)="editDrone(drone)" mat-menu-item>
             <mat-icon>edit</mat-icon>
             <span>Edit</span>
           </button>
-          <button (click)="deleteValue(item)" mat-menu-item>
+          <button (click)="deleteDrone(drone.$id)" mat-menu-item>
             <mat-icon>delete</mat-icon>
             <span>Delete</span>
           </button>

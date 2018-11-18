@@ -47,6 +47,13 @@
   padding-right: 5px;
 }
 
+.card-drone-image {
+  display: flex;
+  width: 80px;
+  height: 80px;
+  padding-right: 5px;
+}
+
 .form-card-list {
   width: 100%;
   display: flex;
@@ -63,6 +70,11 @@ mat-card {
   justify-content: space-between;
   margin-top: 10px;
   margin-bottom: 10px;
+  transition: background-color 300ms;
+}
+
+mat-card:hover {
+  background-color: mat-color($mat-gray, 200);
 }
 
 mat-card:hover > .menu-container{
