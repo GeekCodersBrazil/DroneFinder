@@ -22,6 +22,7 @@ export class Drone {
   cameraVideo: ValuableAttribute
   fpvType: ValuableAttribute
   battery?: ValuableAttribute
+  ammountBatteries?: number
   chargeTime?: number
   flightTime?: number
   flightMaximunDistance?: number

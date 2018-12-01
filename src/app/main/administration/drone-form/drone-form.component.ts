@@ -74,6 +74,7 @@ export class DroneFormComponent implements OnInit {
       }),
       powerAutonomy: fb.group({
         battery: [null, Validators.required],
+        ammountBatteries: [this.drone.ammountBatteries, Validators.required],
         chargeTime: [this.drone.chargeTime, Validators.compose([Validators.required, Validators.pattern("\\d+")])],
         flightTime: [this.drone.flightTime, Validators.compose([Validators.required, Validators.pattern("\\d+")])],
         flightMaximunDistance: [this.drone.flightMaximunDistance, Validators.compose([Validators.required, Validators.pattern("\\d+")])]
@@ -92,6 +93,8 @@ export class DroneFormComponent implements OnInit {
     this.pricing = this.formDrone.get('pricing') as FormGroup
 
     if (this.drone.$id != undefined) {
+      if (this.drone.$id == "CLONE")
+        delete this.drone['$id']
       // Loading object values
       this.selectObject(this.brandService.unfilteredList(), this.basic.get('brand'), this.drone.brand.$id)
 

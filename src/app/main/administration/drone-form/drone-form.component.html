@@ -156,6 +156,9 @@
         <div class="step-container">
           <div class="form-field">
             <mat-form-field>
+              <input matInput formControlName="ammountBatteries" placeholder="Quantity of batteries">
+            </mat-form-field>
+            <mat-form-field>
               <mat-select formControlName="battery" placeholder="Battery">
                 <mat-option *ngFor="let battery of valuableAttributeService.unfilteredList('battery')" [value]="battery">{{battery.value}}</mat-option>
               </mat-select>

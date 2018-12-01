@@ -55,19 +55,22 @@
 }
 
 .form-card-list {
-  width: 100%;
+  width: calc(100% + 10px);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-right: -10px;
 }
 
 mat-card {
-  max-width: 600px;
-  min-width: 300px;
+  //max-width: 600px;
+  border-radius: 10px;
   display: flex;
+  flex: 1 300px;
   flex-direction: row;
   justify-content: space-between;
+  margin-right: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   transition: background-color 300ms;
@@ -94,11 +97,13 @@ mat-card:hover > .menu-container{
 }
 
 .box-search {
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   background-color: gainsboro;
   height: 50px;
+  border-radius: 10px;
 }
 
 .input-search{
