@@ -69,16 +69,22 @@ export class DroneFormComponent implements OnInit {
       }),
       powerAutonomy: fb.group({
 <<<<<<< HEAD
+<<<<<<< HEAD
         battery: [null, Validators.required],
         ammountBatteries: [this.drone.ammountBatteries, Validators.required],
         chargeTime: [this.drone.chargeTime, Validators.compose([Validators.required, Validators.pattern("\\d+")])],
         flightTime: [this.drone.flightTime, Validators.compose([Validators.required, Validators.pattern("\\d+")])],
         flightMaximunDistance: [this.drone.flightMaximunDistance, Validators.compose([Validators.required, Validators.pattern("\\d+")])]
 =======
+=======
+>>>>>>> parent of 5e2ad7d... Administration module ok to go
         battery: ['', Validators.required],
         chargeTime: ['', Validators.compose([Validators.required, Validators.pattern("\\d+")])],
         flightTime: ['', Validators.compose([Validators.required, Validators.pattern("\\d+")])],
         flightMaximunDistance: ['', Validators.compose([Validators.required, Validators.pattern("\\d+")])]
+<<<<<<< HEAD
+>>>>>>> parent of 5e2ad7d... Administration module ok to go
+=======
 >>>>>>> parent of 5e2ad7d... Administration module ok to go
       }),
       pricing: fb.group({
@@ -93,6 +99,7 @@ export class DroneFormComponent implements OnInit {
     this.accessories = this.formDrone.get('accessories') as FormGroup
     this.powerAutonomy = this.formDrone.get('powerAutonomy') as FormGroup
     this.pricing = this.formDrone.get('pricing') as FormGroup
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     if (this.drone.$id != undefined) {
@@ -110,6 +117,8 @@ export class DroneFormComponent implements OnInit {
 
       this.selectObject(this.valuableAttributeService.unfilteredList('battery'), this.powerAutonomy.get('battery'), this.drone.battery.$id)
     }
+=======
+>>>>>>> parent of 5e2ad7d... Administration module ok to go
 =======
 >>>>>>> parent of 5e2ad7d... Administration module ok to go
   }
