@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+@import './theme.scss';
+
+body {
+  background-color: mat-color($mat-grey, 100)
+};
+
+.container {
+  margin: auto;
+  max-width: 1200px;
+  width: calc(100% - 100px);
+  padding: 10px;
+};

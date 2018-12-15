@@ -1,8 +1,8 @@
 import { AdminHomeComponent } from './../admin-home/admin-home.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material';
+import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from '@angular/forms';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { BrandService } from './../../../core/service/brand.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 
 import { CategoryService } from '../../../core/service/category.service';
 
@@ -20,7 +20,7 @@ import { Drone } from 'src/app/core/model/drone.model';
   styleUrls: ['./drone-form.component.scss']
 })
 export class DroneFormComponent implements OnInit {
-  drone: Drone = new Drone()
+  drone: Drone = new Drone
 
   formDrone: FormGroup
   basic: FormGroup
@@ -36,66 +36,51 @@ export class DroneFormComponent implements OnInit {
     public brandService: BrandService,
     public categoryService: CategoryService,
     public valuableAttributeService: ValuableAttributeService,
-    private droneService: DroneService) { }
+    private droneService: DroneService,
+    @Inject(MAT_DIALOG_DATA) public data: Drone, public dialogRef: MatDialogRef<BrandDialogFormComponent>) {
+    if (data != undefined) {
+      this.drone = data
+    }
+  }
 
   ngOnInit() {
     let fb = this.FormBuilder
     this.formDrone = fb.group({
       basic: fb.group({
-        model: ['', Validators.required],
-        brand: ['', Validators.required],
-        category: ['', Validators.required]
+        model: [this.drone.model, Validators.required],
+        brand: [null, Validators.required],
+        category: [this.drone.category, Validators.required]
       }),
       reference: fb.group({
-        pictureURL: ['', Validators.compose([Validators.required])], // TODO Add URL Validator
-        productURL: [''], // TODO Add URL Validator
-        releaseDate: ['']
+        pictureURL: [this.drone.pictureURL, Validators.compose([Validators.required])], // TODO Add URL Validator
+        productURL: [this.drone.productURL], // TODO Add URL Validator
+        releaseDate: [this.drone.releaseDate == undefined ? null : this.drone.releaseDate.toDate()]
       }),
       features: fb.group({
-        gpsPosition: [''],
-        altitudeHold: [''],
+        gpsPosition: [this.drone.gpsPosition],
+        altitudeHold: [this.drone.altitudeHold],
         physical: fb.group({
-          width: ['', Validators.compose([Validators.required, Validators.pattern("\\d+")])],
-          height: ['', Validators.compose([Validators.required, Validators.pattern("\\d+")])],
-          length: ['', Validators.compose([Validators.required, Validators.pattern("\\d+")])],
-          weight: ['', Validators.compose([Validators.required, Validators.pattern("\\d+\\.?\\d*")])]
+          width: [this.drone.physical.width, Validators.compose([Validators.required, Validators.pattern("\\d+")])],
+          height: [this.drone.physical.height, Validators.compose([Validators.required, Validators.pattern("\\d+")])],
+          length: [this.drone.physical.length, Validators.compose([Validators.required, Validators.pattern("\\d+")])],
+          weight: [this.drone.physical.weight, Validators.compose([Validators.required, Validators.pattern("\\d+\\.?\\d*")])]
         })
       }),
       accessories: fb.group({
-        rcType: [''],
-        cameraPhoto: [''],
-        cameraVideo: [''],
-        gimbal: ['']
+        rcType: [null],
+        cameraPhoto: [null],
+        cameraVideo: [null],
+        gimbal: [null]
       }),
       powerAutonomy: fb.group({
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         battery: [null, Validators.required],
-        ammountBatteries: [this.drone.ammountBatteries, Validators.required],
         chargeTime: [this.drone.chargeTime, Validators.compose([Validators.required, Validators.pattern("\\d+")])],
         flightTime: [this.drone.flightTime, Validators.compose([Validators.required, Validators.pattern("\\d+")])],
         flightMaximunDistance: [this.drone.flightMaximunDistance, Validators.compose([Validators.required, Validators.pattern("\\d+")])]
-=======
-=======
->>>>>>> parent of 5e2ad7d... Administration module ok to go
-=======
->>>>>>> parent of 5e2ad7d... Administration module ok to go
-        battery: ['', Validators.required],
-        chargeTime: ['', Validators.compose([Validators.required, Validators.pattern("\\d+")])],
-        flightTime: ['', Validators.compose([Validators.required, Validators.pattern("\\d+")])],
-        flightMaximunDistance: ['', Validators.compose([Validators.required, Validators.pattern("\\d+")])]
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 5e2ad7d... Administration module ok to go
-=======
->>>>>>> parent of 5e2ad7d... Administration module ok to go
-=======
->>>>>>> parent of 5e2ad7d... Administration module ok to go
       }),
       pricing: fb.group({
-          min: ['', Validators.compose([Validators.required, Validators.pattern("\\d+\\.\\d{2}")])],
-          max: ['', Validators.compose([Validators.required, Validators.pattern("\\d+\\.\\d{2}")])]
+        min: [this.drone.priceRange.min, Validators.compose([Validators.required, Validators.pattern("\\d+\\.\\d{2}")])],
+        max: [this.drone.priceRange.max, Validators.compose([Validators.required, Validators.pattern("\\d+\\.\\d{2}")])]
       })
     })
 
@@ -105,13 +90,8 @@ export class DroneFormComponent implements OnInit {
     this.accessories = this.formDrone.get('accessories') as FormGroup
     this.powerAutonomy = this.formDrone.get('powerAutonomy') as FormGroup
     this.pricing = this.formDrone.get('pricing') as FormGroup
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
     if (this.drone.$id != undefined) {
-      if (this.drone.$id == "CLONE")
-        delete this.drone['$id']
       // Loading object values
       this.selectObject(this.brandService.unfilteredList(), this.basic.get('brand'), this.drone.brand.$id)
 
@@ -124,12 +104,6 @@ export class DroneFormComponent implements OnInit {
 
       this.selectObject(this.valuableAttributeService.unfilteredList('battery'), this.powerAutonomy.get('battery'), this.drone.battery.$id)
     }
-=======
->>>>>>> parent of 5e2ad7d... Administration module ok to go
-=======
->>>>>>> parent of 5e2ad7d... Administration module ok to go
-=======
->>>>>>> parent of 5e2ad7d... Administration module ok to go
   }
 
   onAddBrand() {
@@ -141,24 +115,43 @@ export class DroneFormComponent implements OnInit {
   }
 
   onAddValuableAttribute(path: string) {
-    this.dialog.open(ValuableAttributeDialogFormComponent, { data: {path: path}, width: '500px', height: '270px' });
+    this.dialog.open(ValuableAttributeDialogFormComponent, { data: { path: path }, width: '500px', height: '270px' });
   }
 
   cancel() {
     this.formDrone.reset()
+    this.dialogRef.close()
   }
 
   saveDrone() {
-    this.drone = {...this.basic.value,
-                  ...this.reference.value,
-                  ...this.features.value,
-                  ...this.accessories.value,
-                  ...this.powerAutonomy.value,
-                  ...this.pricing.value,
-                  videos: this.drone.videos,
-                  photos: this.drone.pictures,
-                  reviews: this.drone.reviews}
-    this.droneService.insertDrone(this.drone);
+    this.drone = {
+      $id: this.drone.$id,
+      ...this.basic.value,
+      ...this.reference.value,
+      ...this.features.value,
+      ...this.accessories.value,
+      ...this.powerAutonomy.value,
+      priceRange: { ...this.pricing.value },
+      videos: this.drone.videos,
+      pictures: this.drone.pictures,
+      reviews: this.drone.reviews
+    }
+    if (this.drone.$id == undefined)
+      this.droneService.insertDrone(this.drone)
+    else
+      this.droneService.updateDrone(this.drone)
+    this.formDrone.reset()
+    this.dialogRef.close()
+  }
+
+  selectObject(list: any[], control: AbstractControl, id: string): any {
+    let object = list.find(i => i['$id'] == id)
+    control.setValue(object)
+  }
+
+  onTest() {
+    console.log(this.drone.releaseDate.toDate())
+    this.reference.get('releaseDate').setValue(this.drone.releaseDate.toDate())
   }
 
 }

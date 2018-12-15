@@ -1,21 +1,8 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { Observable } from 'rxjs';
-=======
-import { Observable, Subscription } from 'rxjs';
->>>>>>> parent of 5e2ad7d... Administration module ok to go
-=======
-import { Observable, Subscription } from 'rxjs';
->>>>>>> parent of 5e2ad7d... Administration module ok to go
-=======
-import { Observable } from 'rxjs';
->>>>>>> parent of 1553ffa... Jimmy Rig to fix searches
+import { Subscription } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, } from '@angular/fire/firestore';
 
 import { Brand } from './../model/brand.model';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -24,67 +11,39 @@ export class BrandService {
 
   readonly path: string = 'brands'
 
+  private subscription: Subscription
+
   collection: AngularFirestoreCollection<Brand>
-  observableList: Observable<Brand[]>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  totalItems: number = 0;
-=======
-=======
->>>>>>> parent of 5e2ad7d... Administration module ok to go
   totalItems: number = 0
   filteredResults: number = 0
   fixedList: Brand[] = []
->>>>>>> parent of 5e2ad7d... Administration module ok to go
-=======
-  totalItems: number = 0;
->>>>>>> parent of 1553ffa... Jimmy Rig to fix searches
 
   constructor(private firestore: AngularFirestore) {
     this.fetchObservable()
   }
 
   fetchObservable() {
-    this.collection = this.firestore.collection<Brand>(this.path)
-    this.observableList = this.collection.snapshotChanges().pipe(
-      map(items => {
+    this.collection = this.firestore.collection<Brand>(this.path, ref => ref.orderBy('name'))
+    this.subscription = this.collection.snapshotChanges().subscribe(
+      items => {
         this.totalItems = items.length
+        this.fixedList = []
         return items.map(item => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-          const data = item.payload.doc.data() as Brand
-          const $id = item.payload.doc.id
-          return { $id, ...data }
-=======
           let data = item.payload.doc.data() as Brand
           data['$id'] = item.payload.doc.id
           this.fixedList.push(data)
-          return data
-<<<<<<< HEAD
->>>>>>> parent of 5e2ad7d... Administration module ok to go
-=======
->>>>>>> parent of 5e2ad7d... Administration module ok to go
-=======
-          const data = item.payload.doc.data() as Brand
-          const $id = item.payload.doc.id
-          return { $id, ...data }
->>>>>>> parent of 1553ffa... Jimmy Rig to fix searches
         })
-      })
+      }
     )
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of 5e2ad7d... Administration module ok to go
+  unfilteredList() {
+    if (this.fixedList == undefined)
+      this.fixedList = []
+    return this.fixedList
+  }
+
   filter(field: string, value: string): Brand[] {
-    if (this.subscription == undefined) {
-      this.subscription = this.observableList.subscribe(() => undefined)
-    }
     let brands: Brand[] = (value != '') ? this.fixedList.filter(brand => brand[field].toLocaleLowerCase().includes(value.toLocaleLowerCase())) : this.fixedList
     this.filteredResults = brands.length
     return brands
@@ -94,9 +53,6 @@ export class BrandService {
     this.subscription.unsubscribe()
   }
 
->>>>>>> parent of 5e2ad7d... Administration module ok to go
-=======
->>>>>>> parent of 1553ffa... Jimmy Rig to fix searches
   insertBrand(brand: Brand) {
     let brandData = { ...brand }
     delete brandData['$id']

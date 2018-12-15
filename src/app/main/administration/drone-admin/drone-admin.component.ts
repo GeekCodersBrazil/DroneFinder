@@ -36,12 +36,6 @@ export class DroneAdminComponent implements OnInit {
     this.dialog.open(DroneFormComponent, { width: '80%', height: '75%', data: {...drone} })
   }
 
-  copyDrone(drone: Drone) {
-    let newDrone = {...drone}
-    newDrone.$id = "CLONE"
-    this.dialog.open(DroneFormComponent, { width: '80%', height: '75%', data: newDrone })
-  }
-
   deleteDrone(id: string) {
     this.service.deleteDrone(id)
   }
