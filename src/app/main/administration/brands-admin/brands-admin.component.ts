@@ -18,7 +18,6 @@ import { screenAnimation, itemAnimation } from 'src/app/shared/animations/form-a
 export class BrandsAdminComponent implements OnInit {
 
   formState: string = 'opened'
-  searchString: string = ''
 
   constructor(public service: BrandService, private dialog: MatDialog) { }
 

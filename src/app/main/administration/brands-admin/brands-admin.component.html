@@ -6,7 +6,7 @@
         <h1 style="margin-left: 10%">Brands</h1>
       </div>
 
-      <h4>You have <strong>{{service.filteredResults}}</strong> brands registered</h4>
+      <h4>You have <strong>{{service.totalItems}}</strong> brands registered</h4>
     </div>
     <div style="align-self:center">
       <button (click)="addBrand()" mat-raised-button color="primary">New Brand</button>
@@ -16,11 +16,11 @@
 
   <div class="box-search">
     <mat-icon class="form-icon" svgIcon="search" style="margin-top: 10px"></mat-icon>
-    <input class="input-search" [(ngModel)]="searchString">
+    <input class="input-search" (keyup)="Search($event.target.value)">
   </div>
 
-  <div class="form-card-list" [@itemAnimation]="service.filter('name', searchString).length">
-    <mat-card *ngFor="let brand of service.filter('name', searchString)">
+  <div class="form-card-list" [@itemAnimation]="service.totalItems">
+    <mat-card *ngFor="let brand of service.observableList | async">
       <mat-card-header>
         <mat-card-title>{{brand.name}}</mat-card-title>
         <mat-card-subtitle>{{brand.brandURL}}</mat-card-subtitle>
