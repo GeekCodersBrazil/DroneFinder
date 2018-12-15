@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Observable } from 'rxjs';
+=======
+import { Observable, Subscription } from 'rxjs';
+>>>>>>> parent of 5e2ad7d... Administration module ok to go
 =======
 import { Observable, Subscription } from 'rxjs';
 >>>>>>> parent of 5e2ad7d... Administration module ok to go
@@ -19,8 +23,11 @@ export class BrandService {
   collection: AngularFirestoreCollection<Brand>
   observableList: Observable<Brand[]>
 <<<<<<< HEAD
+<<<<<<< HEAD
   totalItems: number = 0;
 =======
+=======
+>>>>>>> parent of 5e2ad7d... Administration module ok to go
   totalItems: number = 0
   filteredResults: number = 0
   fixedList: Brand[] = []
@@ -45,6 +52,9 @@ export class BrandService {
           data['$id'] = item.payload.doc.id
           this.fixedList.push(data)
           return data
+<<<<<<< HEAD
+>>>>>>> parent of 5e2ad7d... Administration module ok to go
+=======
 >>>>>>> parent of 5e2ad7d... Administration module ok to go
         })
       })
@@ -52,7 +62,10 @@ export class BrandService {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 5e2ad7d... Administration module ok to go
   filter(field: string, value: string): Brand[] {
     if (this.subscription == undefined) {
       this.subscription = this.observableList.subscribe(() => undefined)
