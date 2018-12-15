@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Observable } from 'rxjs';
 =======
 import { Observable, Subscription } from 'rxjs';
@@ -7,6 +8,9 @@ import { Observable, Subscription } from 'rxjs';
 =======
 import { Observable, Subscription } from 'rxjs';
 >>>>>>> parent of 5e2ad7d... Administration module ok to go
+=======
+import { Observable } from 'rxjs';
+>>>>>>> parent of 1553ffa... Jimmy Rig to fix searches
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, } from '@angular/fire/firestore';
 
@@ -24,6 +28,7 @@ export class BrandService {
   observableList: Observable<Brand[]>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   totalItems: number = 0;
 =======
 =======
@@ -32,6 +37,9 @@ export class BrandService {
   filteredResults: number = 0
   fixedList: Brand[] = []
 >>>>>>> parent of 5e2ad7d... Administration module ok to go
+=======
+  totalItems: number = 0;
+>>>>>>> parent of 1553ffa... Jimmy Rig to fix searches
 
   constructor(private firestore: AngularFirestore) {
     this.fetchObservable()
@@ -43,6 +51,7 @@ export class BrandService {
       map(items => {
         this.totalItems = items.length
         return items.map(item => {
+<<<<<<< HEAD
 <<<<<<< HEAD
           const data = item.payload.doc.data() as Brand
           const $id = item.payload.doc.id
@@ -56,11 +65,17 @@ export class BrandService {
 >>>>>>> parent of 5e2ad7d... Administration module ok to go
 =======
 >>>>>>> parent of 5e2ad7d... Administration module ok to go
+=======
+          const data = item.payload.doc.data() as Brand
+          const $id = item.payload.doc.id
+          return { $id, ...data }
+>>>>>>> parent of 1553ffa... Jimmy Rig to fix searches
         })
       })
     )
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -80,6 +95,8 @@ export class BrandService {
   }
 
 >>>>>>> parent of 5e2ad7d... Administration module ok to go
+=======
+>>>>>>> parent of 1553ffa... Jimmy Rig to fix searches
   insertBrand(brand: Brand) {
     let brandData = { ...brand }
     delete brandData['$id']
