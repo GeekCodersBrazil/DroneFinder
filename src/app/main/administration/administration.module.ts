@@ -1,5 +1,3 @@
-import { ValuableAttributeService } from './../../core/service/valuable-attribute.Service';
-import { BrandService } from './../../core/service/brand.service';
 import { ValuableAttributeAdminComponent } from './valuable-attribute-admin/valuable-attribute-admin.component';
 import { BrandsAdminComponent } from './brands-admin/brands-admin.component';
 import { RouterModule } from '@angular/router';
@@ -17,6 +15,7 @@ import { SharedModule } from './../../shared/shared.module';
 
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { DroneFormComponent } from './drone-form/drone-form.component';
+import { DroneListComponent } from './drone-list/drone-list.component';
 
 import { CategoryDialogFormComponent } from './basic-dialog-forms/category-dialog-form/category-dialog-form.component';
 import { BrandDialogFormComponent } from './basic-dialog-forms/brand-dialog-form/brand-dialog-form.component';
@@ -27,12 +26,10 @@ import { CoreModule } from '../../core/core.module';
 import { MatIconRegistry } from "@angular/material";
 import { DomSanitizer, BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from '@angular/common/http';
-import { DroneAdminComponent } from './drone-admin/drone-admin.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    CoreModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
@@ -56,14 +53,16 @@ import { DroneAdminComponent } from './drone-admin/drone-admin.component';
     MatButtonToggleModule,
     MatRippleModule,
     MatMenuModule,
-    MatSlideToggleModule,
+    CoreModule,
 
-    SharedModule
+    SharedModule,
+
+    MatSlideToggleModule
   ],
   declarations: [
     AdminHomeComponent,
     DroneFormComponent,
-    DroneAdminComponent,
+    DroneListComponent,
     CategoryDialogFormComponent,
     ValuableAttributeDialogFormComponent,
     BrandDialogFormComponent,
@@ -77,11 +76,11 @@ import { DroneAdminComponent } from './drone-admin/drone-admin.component';
     CategoryDialogFormComponent,
     ValuableAttributeDialogFormComponent],
   exports: [
-    AdminHomeComponent
+    AdminHomeComponent, BrandsAdminComponent, DroneListComponent
   ]
 })
 export class AdministrationModule {
-  constructor (private iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private brandService: BrandService, private valuableAttributeService: ValuableAttributeService) {
+  constructor (private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
     this.iconRegistry.addSvgIcon('drone', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/drone.svg'))
     this.iconRegistry.addSvgIcon('brand', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/brand.svg'))
     this.iconRegistry.addSvgIcon('rcType', sanitizer.bypassSecurityTrustResourceUrl('/assets/img/icons/rc.svg'))

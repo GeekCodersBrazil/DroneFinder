@@ -1,6 +1,6 @@
 export class PhysicalAttributes {
   width: number
   height: number
-  length: number
+  lenght: number
   weight: number
 }

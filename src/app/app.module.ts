@@ -23,9 +23,12 @@ import { AdministrationModule } from './main/administration/administration.modul
 import { AppRoutingModule } from './/app-routing.module';
 
 // Services and Guards
+import { AuthService } from './core/service/auth.service';
+import { AdminGuard } from './core/guard/admin.guard';
 import { CategoryService } from './core/service/category.service';
 import { BrandService } from './core/service/brand.service';
 import { DroneService } from './core/service/drone.service';
+import { UserService } from './core/service/user.service';
 import { ValuableAttributeService } from './core/service/valuable-attribute.Service';
 
 @NgModule({

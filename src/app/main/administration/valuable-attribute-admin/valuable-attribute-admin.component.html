@@ -6,21 +6,18 @@
         <h1 style="margin-left: 10%">{{formName[attribute]}}</h1>
       </div>
 
-      <h4>You have <strong>{{service.filteredResults[attribute]}}</strong> {{pluralName[attribute]}} registered</h4>
+      <h4>You have <strong>{{service.totalItems[attribute]}}</strong> {{pluralName[attribute]}} registered</h4>
     </div>
     <div style="align-self:center">
       <button (click)="addItem()" mat-raised-button color="primary">New {{formName[attribute]}}</button>
     </div>
   </div>
   <mat-divider></mat-divider>
+  <div>
 
-  <div class="box-search">
-    <mat-icon class="form-icon" svgIcon="search" style="margin-top: 10px"></mat-icon>
-    <input class="input-search" [(ngModel)]="searchString">
   </div>
-
-  <div class="form-card-list" [@itemAnimation]="service.filter(attribute, 'value', searchString).length">
-    <mat-card *ngFor="let item of service.filter(attribute, 'value', searchString)">
+  <div class="form-card-list" [@itemAnimation]="service.totalItems[attribute]">
+    <mat-card *ngFor="let item of service.observableList[attribute] | async">
       <mat-card-header>
         <mat-card-title>{{item.value}}</mat-card-title>
         <mat-card-subtitle>{{item.order}}</mat-card-subtitle>

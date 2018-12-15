@@ -21,7 +21,7 @@
 <div class="form-card-list">
          
 <div fxLayout="row" fxFlex="25%" style="padding-top:10px" *ngFor="let user of GetUsers() | async">
-    <mat-card>
+    <mat-card class="example-card" >
        <mat-card-header >
           <img mat-card-avatar src={{user.photoURL}}>
           <mat-card-title>{{user.name}}</mat-card-title>

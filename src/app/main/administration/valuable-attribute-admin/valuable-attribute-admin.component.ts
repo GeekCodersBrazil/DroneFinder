@@ -1,7 +1,7 @@
 import { ValuableAttribute } from './../../../core/model/subtypes/valuable-attribute';
 import { MatDialog } from '@angular/material';
 import { ValuableAttributeService } from './../../../core/service/valuable-attribute.Service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { screenAnimation, itemAnimation } from 'src/app/shared/animations/form-animations';
 import { Router } from '@angular/router';
 import { ValuableAttributeDialogFormComponent } from '../basic-dialog-forms/valuable-attribute-dialog-form/valuable-attribute-dialog-form.component';
@@ -15,7 +15,7 @@ import { ValuableAttributeDialogFormComponent } from '../basic-dialog-forms/valu
     itemAnimation
   ]
 })
-export class ValuableAttributeAdminComponent implements OnInit, OnDestroy {
+export class ValuableAttributeAdminComponent implements OnInit {
 
   formName = {
     rcType: 'RC',
@@ -31,17 +31,12 @@ export class ValuableAttributeAdminComponent implements OnInit, OnDestroy {
     battery: 'Batteries'}
 
   formState: string = 'opened'
-  searchString: string = ''
   attribute: string
 
   constructor(public service: ValuableAttributeService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.attribute = this.router.url.substr(7) // Ok, it's horrible and I know it.  Sorry!
-  }
-
-  ngOnDestroy(): void {
-    this.service.unsubscribe();
   }
 
   addItem() {
